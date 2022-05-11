@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7CADD9F4282BF5B500A98290 /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CADD9F3282BF5B500A98290 /* HomeScreenView.swift */; };
+		7CADD9F8282BF5D700A98290 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CADD9F7282BF5D700A98290 /* CardView.swift */; };
+		7CADD9FB282BF6AA00A98290 /* ClearTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CADD9FA282BF6AA00A98290 /* ClearTextField.swift */; };
 		CB8250DC282BF2C9001ED786 /* BagLocationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8250DB282BF2C9001ED786 /* BagLocationApp.swift */; };
 		CB8250DE282BF2C9001ED786 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8250DD282BF2C9001ED786 /* ContentView.swift */; };
 		CB8250E0282BF2CB001ED786 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB8250DF282BF2CB001ED786 /* Assets.xcassets */; };
@@ -16,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7CADD9F3282BF5B500A98290 /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
+		7CADD9F7282BF5D700A98290 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		7CADD9FA282BF6AA00A98290 /* ClearTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearTextField.swift; sourceTree = "<group>"; };
 		CB8250D8282BF2C9001ED786 /* BagLocation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BagLocation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB8250DB282BF2C9001ED786 /* BagLocationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagLocationApp.swift; sourceTree = "<group>"; };
 		CB8250DD282BF2C9001ED786 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -36,6 +42,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7CADD9F2282BF41B00A98290 /* HomeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				7CADD9F5282BF5C100A98290 /* Components */,
+				7CADD9F3282BF5B500A98290 /* HomeScreenView.swift */,
+			);
+			path = HomeScreen;
+			sourceTree = "<group>";
+		};
+		7CADD9F5282BF5C100A98290 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				7CADD9F7282BF5D700A98290 /* CardView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		7CADD9F9282BF69A00A98290 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				7CADD9FA282BF6AA00A98290 /* ClearTextField.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		CB8250CF282BF2C9001ED786 = {
 			isa = PBXGroup;
 			children = (
@@ -55,11 +86,13 @@
 		CB8250DA282BF2C9001ED786 /* BagLocation */ = {
 			isa = PBXGroup;
 			children = (
+				7CADD9F2282BF41B00A98290 /* HomeScreen */,
 				CB8250DB282BF2C9001ED786 /* BagLocationApp.swift */,
 				CB8250DD282BF2C9001ED786 /* ContentView.swift */,
 				CB8250DF282BF2CB001ED786 /* Assets.xcassets */,
 				CB8250E4282BF2CB001ED786 /* Persistence.swift */,
 				CB8250E6282BF2CB001ED786 /* BagLocation.xcdatamodeld */,
+				7CADD9F9282BF69A00A98290 /* Utils */,
 				CB8250E1282BF2CB001ED786 /* Preview Content */,
 			);
 			path = BagLocation;
@@ -145,7 +178,10 @@
 			files = (
 				CB8250E5282BF2CB001ED786 /* Persistence.swift in Sources */,
 				CB8250DE282BF2C9001ED786 /* ContentView.swift in Sources */,
+				7CADD9FB282BF6AA00A98290 /* ClearTextField.swift in Sources */,
+				7CADD9F4282BF5B500A98290 /* HomeScreenView.swift in Sources */,
 				CB8250DC282BF2C9001ED786 /* BagLocationApp.swift in Sources */,
+				7CADD9F8282BF5D700A98290 /* CardView.swift in Sources */,
 				CB8250E8282BF2CB001ED786 /* BagLocation.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
