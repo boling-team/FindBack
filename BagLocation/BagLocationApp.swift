@@ -13,9 +13,8 @@ struct BagLocationApp: App {
 
     var body: some Scene {
         WindowGroup {
-            HomeScreenView()
-//            ContentView()
-//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            ItemSearchView()
         }
     }
 }
+
