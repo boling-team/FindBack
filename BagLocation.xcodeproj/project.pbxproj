@@ -18,6 +18,7 @@
 		CB8250E8282BF2CB001ED786 /* BagLocation.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB8250E6282BF2CB001ED786 /* BagLocation.xcdatamodeld */; };
 		DC411633282D4A400055B9F7 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC411632282D4A400055B9F7 /* Coordinator.swift */; };
 		DC7E0C30282BFA2600FDF70C /* AddBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7E0C2F282BFA2600FDF70C /* AddBag.swift */; };
+		DC94C34B282D64780027C215 /* ImageTaggerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC94C34A282D64780027C215 /* ImageTaggerViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		DC411632282D4A400055B9F7 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		DC7E0C2F282BFA2600FDF70C /* AddBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBag.swift; sourceTree = "<group>"; };
 		DC7E0C31282C2EB600FDF70C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		DC94C34A282D64780027C215 /* ImageTaggerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTaggerViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 			children = (
 				DC7E0C2F282BFA2600FDF70C /* AddBag.swift */,
 				DC411632282D4A400055B9F7 /* Coordinator.swift */,
+				DC94C34A282D64780027C215 /* ImageTaggerViewModel.swift */,
 			);
 			path = AddBagScreen;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 				7CADD9FB282BF6AA00A98290 /* ClearTextField.swift in Sources */,
 				7CADD9F4282BF5B500A98290 /* HomeScreenView.swift in Sources */,
 				DC411633282D4A400055B9F7 /* Coordinator.swift in Sources */,
+				DC94C34B282D64780027C215 /* ImageTaggerViewModel.swift in Sources */,
 				CB8250DC282BF2C9001ED786 /* BagLocationApp.swift in Sources */,
 				7CADD9F8282BF5D700A98290 /* CardView.swift in Sources */,
 				CB8250E8282BF2CB001ED786 /* BagLocation.xcdatamodeld in Sources */,
