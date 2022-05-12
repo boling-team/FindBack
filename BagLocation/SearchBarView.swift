@@ -10,7 +10,8 @@ import SwiftUIX
 
 struct SearchBar: View {
     @Binding var text: String
- 
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     @State private var isEditing = true
  
     var body: some View {
@@ -44,12 +45,14 @@ struct SearchBar: View {
                 .onTapGesture {
                     self.isEditing = true
                 }
- 
+                .onChange(of: /*@START_MENU_TOKEN@*/"Value"/*@END_MENU_TOKEN@*/) { value in
+                    self.text = value
+                }
+            
             if isEditing {
                 Button(action: {
                     self.text = ""
-                    
- 
+                    presentationMode.wrappedValue.dismiss()
                 }) {
                     Text("Cancel")
                 }
