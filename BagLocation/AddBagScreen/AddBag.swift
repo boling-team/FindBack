@@ -37,58 +37,63 @@ struct AddBag: View {
                                     .foregroundColor(.black)
                                 
                                 if (image==nil){
-                                    Image("empty")
-                                        .resizable()
-                                        .cornerRadius(10)
-                                        .aspectRatio(contentMode: .fit)
-                                        .padding(.bottom)
-                                }else{
+                                    Button(action: {
+                                        self.showCaptureImageView.toggle()
+                                    }, label: {
+                                        Image("empty-2")
+                                            .resizable()
+                                            .cornerRadius(10)
+                                            .aspectRatio(contentMode: .fit)
+                                            .padding(.bottom)
+                                    })
                                     
-                                        ZStack(alignment: .topLeading){
-                                            image?.resizable()
-                                                .gesture(
-                                                    DragGesture(minimumDistance: 0, coordinateSpace: .local)
-                                                        .onChanged { value in
-                                                            if self.currPoint.x != 0 && self.currPoint.y != 0 {
-                                                                return
-                                                            }
-                                                            self.currPoint = value.location
-                                                            print(value.location)
+                                }else{
+                                    ZStack(alignment: .topLeading){
+                                        image?.resizable()
+                                            .gesture(
+                                                DragGesture(minimumDistance: 0, coordinateSpace: .local)
+                                                    .onChanged { value in
+                                                        if self.currPoint.x != 0 && self.currPoint.y != 0 {
+                                                            return
                                                         }
-                                                        .onEnded { _ in
-                                                            viewModel.tagPoint.append(
-                                                                BagPoint(point: CGPoint(x: self.currPoint.x, y: self.currPoint.y)))
-                                                            self.currPoint = CGPoint(x: 0, y: 0)
-                                                        }
-                                                )
-                                                .frame(width: 330, height: 330)
+                                                        self.currPoint = value.location
+                                                        print(value.location)
+                                                    }
+                                                    .onEnded { _ in
+                                                        viewModel.tagPoint.append(
+                                                            BagPoint(point: CGPoint(x: self.currPoint.x, y: self.currPoint.y)))
+                                                        self.currPoint = CGPoint(x: 0, y: 0)
+                                                    }
+                                            )
+                                            .frame(width: 330, height: 380)
 //                                                .aspectRatio(contentMode: .fit)
 //                                                .shadow(radius: 10)
+                                        
+                                        ForEach(0..<viewModel.tagPoint.count, id: \.self) { x in
+                                            let bagPoint = viewModel.tagPoint[x]
                                             
-                                            ForEach(0..<viewModel.tagPoint.count, id: \.self) { x in
-                                                let bagPoint = viewModel.tagPoint[x]
-                                                
-                                                Image(systemName: "bubble.middle.bottom.fill")
-                                                    .foregroundColor(bagPoint.color)
+                                            Image(systemName: "bubble.middle.bottom.fill")
+                                                .foregroundColor(bagPoint.color)
 //                                                    .stroke(lineWidth: 2.0)
 //                                                    .fill(bagPoint.color)
-                                                    .position(bagPoint.point)
-                                                    .frame(width: 20, height: 20)
-                                            }
+                                                .position(bagPoint.point)
+                                                .frame(width: 20, height: 20)
                                         }
-                                        .border(.black, width: 2)
+                                    }
+                                    .border(.black, width: 2)
                                     
                                 }
                                 
-                                Button(action: {
-                                    self.showCaptureImageView.toggle()
-                                }) {
-                                    if (image==nil){
-                                        Text("Add photo")
-                                    }else{
-                                        Text("Change photo")
+                                if (image==nil){
+                                    
+                                }else{
+                                    Button(action: {
+                                        self.showCaptureImageView.toggle()
+                                    }) {
+                                            Text("Change photo")
                                     }
                                 }
+                                
                                 
                                 
                                 
@@ -103,10 +108,11 @@ struct AddBag: View {
                                         .renderingMode(.original) // <1>
                                         .font(.system(size: 25))
                                     VStack(alignment: .leading){
-                                        Text("Main Pocket").foregroundColor(.gray)
+                                        Text("Main Pocket")
+                                            .font(.system(size: 20))
+                                            .foregroundColor(.gray)
                                         Text("15 Items")
                                             .foregroundColor(.black)
-                                            .font(.system(size: 20))
                                             .multilineTextAlignment(.leading)
                                     }
                                     
@@ -170,7 +176,7 @@ extension CaptureImageView: UIViewControllerRepresentable {
     }
     
     func updateUIViewController(_ uiViewController: UIImagePickerController,
-                                context: UIViewControllerRepresentableContext<CaptureImageView>) {
+        context: UIViewControllerRepresentableContext<CaptureImageView>) {
         
     }
 }
