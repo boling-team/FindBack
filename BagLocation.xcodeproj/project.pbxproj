@@ -10,6 +10,9 @@
 		7CADD9F4282BF5B500A98290 /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CADD9F3282BF5B500A98290 /* HomeScreenView.swift */; };
 		7CADD9F8282BF5D700A98290 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CADD9F7282BF5D700A98290 /* CardView.swift */; };
 		7CADD9FB282BF6AA00A98290 /* ClearTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CADD9FA282BF6AA00A98290 /* ClearTextField.swift */; };
+		CB3403AD2834A1B70045AB62 /* OnboardingMainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3403AC2834A1B70045AB62 /* OnboardingMainScreen.swift */; };
+		CB3403AF2834AA850045AB62 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3403AE2834AA850045AB62 /* Model.swift */; };
+		CB3403B12834AB220045AB62 /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3403B02834AB220045AB62 /* Views.swift */; };
 		CB8250DC282BF2C9001ED786 /* BagLocationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8250DB282BF2C9001ED786 /* BagLocationApp.swift */; };
 		CB8250DE282BF2C9001ED786 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8250DD282BF2C9001ED786 /* ContentView.swift */; };
 		CB8250E0282BF2CB001ED786 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB8250DF282BF2CB001ED786 /* Assets.xcassets */; };
@@ -26,6 +29,9 @@
 		7CADD9F3282BF5B500A98290 /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
 		7CADD9F7282BF5D700A98290 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		7CADD9FA282BF6AA00A98290 /* ClearTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearTextField.swift; sourceTree = "<group>"; };
+		CB3403AC2834A1B70045AB62 /* OnboardingMainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingMainScreen.swift; sourceTree = "<group>"; };
+		CB3403AE2834AA850045AB62 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		CB3403B02834AB220045AB62 /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
 		CB8250D8282BF2C9001ED786 /* BagLocation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BagLocation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB8250DB282BF2C9001ED786 /* BagLocationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagLocationApp.swift; sourceTree = "<group>"; };
 		CB8250DD282BF2C9001ED786 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -76,6 +82,16 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		CB3403AB2834A10A0045AB62 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				CB3403AC2834A1B70045AB62 /* OnboardingMainScreen.swift */,
+				CB3403AE2834AA850045AB62 /* Model.swift */,
+				CB3403B02834AB220045AB62 /* Views.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		CB8250CF282BF2C9001ED786 = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +111,7 @@
 		CB8250DA282BF2C9001ED786 /* BagLocation */ = {
 			isa = PBXGroup;
 			children = (
+				CB3403AB2834A10A0045AB62 /* Onboarding */,
 				7CADD9F2282BF41B00A98290 /* HomeScreen */,
 				DC7E0C31282C2EB600FDF70C /* Info.plist */,
 				DC7E0C2C282BF95B00FDF70C /* AddBagScreen */,
@@ -198,6 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB3403AF2834AA850045AB62 /* Model.swift in Sources */,
 				CB8250E5282BF2CB001ED786 /* Persistence.swift in Sources */,
 				DC215E5F28334D5200A71627 /* AddPocket.swift in Sources */,
 				CB8250DE282BF2C9001ED786 /* ContentView.swift in Sources */,
@@ -205,8 +223,10 @@
 				7CADD9F4282BF5B500A98290 /* HomeScreenView.swift in Sources */,
 				DC411633282D4A400055B9F7 /* Coordinator.swift in Sources */,
 				CB8250DC282BF2C9001ED786 /* BagLocationApp.swift in Sources */,
+				CB3403AD2834A1B70045AB62 /* OnboardingMainScreen.swift in Sources */,
 				7CADD9F8282BF5D700A98290 /* CardView.swift in Sources */,
 				DCCD3A52283535360068C610 /* AddBagView.swift in Sources */,
+				CB3403B12834AB220045AB62 /* Views.swift in Sources */,
 				CB8250E8282BF2CB001ED786 /* BagLocation.xcdatamodeld in Sources */,
 				DCCD3A5028352D590068C610 /* AddBagImage.swift in Sources */,
 				DC7E0C30282BFA2600FDF70C /* AddBag.swift in Sources */,
