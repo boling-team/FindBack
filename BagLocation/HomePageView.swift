@@ -16,6 +16,10 @@ struct HomePageView: View {
                     Text("Hello, World!")
                 }
                 
+                NavigationLink(destination: BagCompartmentItemView()) {
+                    Text("add item to bag compartment")
+                }
+                
                 Text("add item to tags")
                     .onTapGesture {
                         isSheetPresented.toggle()

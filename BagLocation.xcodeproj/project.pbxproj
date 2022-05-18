@@ -13,6 +13,7 @@
 		CB0C2FAD282C1BF500DE4529 /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = CB0C2FAC282C1BF500DE4529 /* SwiftUIX */; };
 		CB321A9C282CE16D00A13AC4 /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB321A9B282CE16D00A13AC4 /* HomePageView.swift */; };
 		CB321A9E282D267200A13AC4 /* AddItemSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB321A9D282D267200A13AC4 /* AddItemSheetView.swift */; };
+		CB3403B3283536A70045AB62 /* BagCompartmentItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3403B2283536A70045AB62 /* BagCompartmentItemView.swift */; };
 		CB8250DC282BF2C9001ED786 /* BagLocationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8250DB282BF2C9001ED786 /* BagLocationApp.swift */; };
 		CB8250DE282BF2C9001ED786 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8250DD282BF2C9001ED786 /* ContentView.swift */; };
 		CB8250E0282BF2CB001ED786 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB8250DF282BF2CB001ED786 /* Assets.xcassets */; };
@@ -24,12 +25,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-
 		7CADD9F3282BF5B500A98290 /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
 		7CADD9F7282BF5D700A98290 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		7CADD9FA282BF6AA00A98290 /* ClearTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearTextField.swift; sourceTree = "<group>"; };
 		CB321A9B282CE16D00A13AC4 /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
 		CB321A9D282D267200A13AC4 /* AddItemSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemSheetView.swift; sourceTree = "<group>"; };
+		CB3403B2283536A70045AB62 /* BagCompartmentItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagCompartmentItemView.swift; sourceTree = "<group>"; };
 		CB8250D8282BF2C9001ED786 /* BagLocation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BagLocation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB8250DB282BF2C9001ED786 /* BagLocationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagLocationApp.swift; sourceTree = "<group>"; };
 		CB8250DD282BF2C9001ED786 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -109,6 +110,7 @@
 				CB8250F2282C1343001ED786 /* SearchBarView.swift */,
 				CB321A9B282CE16D00A13AC4 /* HomePageView.swift */,
 				CB321A9D282D267200A13AC4 /* AddItemSheetView.swift */,
+				CB3403B2283536A70045AB62 /* BagCompartmentItemView.swift */,
 			);
 			path = BagLocation;
 			sourceTree = "<group>";
@@ -206,6 +208,7 @@
 				CB8250E8282BF2CB001ED786 /* BagLocation.xcdatamodeld in Sources */,
 				CB8250F3282C1343001ED786 /* SearchBarView.swift in Sources */,
 				CB321A9E282D267200A13AC4 /* AddItemSheetView.swift in Sources */,
+				CB3403B3283536A70045AB62 /* BagCompartmentItemView.swift in Sources */,
 				CB321A9C282CE16D00A13AC4 /* HomePageView.swift in Sources */,
 				CB8250F1282C0E33001ED786 /* ItemSearchView.swift in Sources */,
 			);
