@@ -10,5 +10,9 @@
 			<string>Default</string>
 		</dict>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>S</string>
+	</array>
 </dict>
 </plist>
