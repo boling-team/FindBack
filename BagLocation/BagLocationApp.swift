@@ -13,7 +13,7 @@ struct BagLocationApp: App {
 
     var body: some Scene {
         WindowGroup {
-            HomePageView()
+            OnboardingMainScreen()
 //            ContentView()
 //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }

@@ -1,0 +1,83 @@
+//
+//  OnboardingMainScreen.swift
+//  BagLocation
+//
+//  Created by Agus Budianto on 18/05/22.
+//
+
+import SwiftUI
+
+struct OnboardingMainScreen: View {
+    
+    @State var selectedPage = 0
+    var onboardItem: [OnboarModel]
+    
+    init() {
+        self.onboardItem = OnboarModel.initData()
+        UIPageControl.appearance().currentPageIndicatorTintColor = .black
+        UIPageControl.appearance().pageIndicatorTintColor = UIColor.black.withAlphaComponent(0.2)
+        
+    }
+    
+    var body: some View {
+        ZStack {
+            
+            Image("GradientBG")
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.all)
+            
+            VStack{
+                Spacer(minLength: 50)
+                HStack{
+                    Spacer()
+                    Text("Skip")
+                        .font(Font.system(.headline, design: .serif))
+                        .padding()
+                }
+                
+                TabView(selection: $selectedPage)
+                {
+                    ForEach(0..<onboardItem.count){ index in
+                        OnboardItemView(model: onboardItem[index], page: index)
+                    }
+                }
+                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
+                
+                
+                
+                Button(action : {
+                    if selectedPage > (onboardItem.count - 1){
+                        selectedPage = 0
+                        return
+                    }
+                    
+                    selectedPage += 1
+                })
+                {
+                    Text("Next")
+                        .frame(width: 192)
+                        .font(.system(size: 18))
+                        .padding()
+                        .foregroundColor(.white)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.white, lineWidth: 2)
+                        )
+                }
+                .background(Color("appColor"))
+                .cornerRadius(10)
+                
+                Spacer(minLength: 100)
+                
+            }
+        }
+    }
+}
+
+struct OnboardingMainScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        OnboardingMainScreen()
+    }
+}
+
