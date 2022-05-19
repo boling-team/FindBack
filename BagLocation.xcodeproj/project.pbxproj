@@ -16,6 +16,10 @@
 		CB8250E3282BF2CB001ED786 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB8250E2282BF2CB001ED786 /* Preview Assets.xcassets */; };
 		CB8250E5282BF2CB001ED786 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8250E4282BF2CB001ED786 /* Persistence.swift */; };
 		CB8250E8282BF2CB001ED786 /* BagLocation.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB8250E6282BF2CB001ED786 /* BagLocation.xcdatamodeld */; };
+		DC215E5F28334D5200A71627 /* AddPocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC215E5E28334D5200A71627 /* AddPocket.swift */; };
+		DC411633282D4A400055B9F7 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC411632282D4A400055B9F7 /* Coordinator.swift */; };
+		DC7E0C30282BFA2600FDF70C /* AddBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7E0C2F282BFA2600FDF70C /* AddBag.swift */; };
+		DCCD3A5028352D590068C610 /* AddBagImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCD3A4F28352D590068C610 /* AddBagImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +33,11 @@
 		CB8250E2282BF2CB001ED786 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CB8250E4282BF2CB001ED786 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		CB8250E7282BF2CB001ED786 /* BagLocation.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BagLocation.xcdatamodel; sourceTree = "<group>"; };
+		DC215E5E28334D5200A71627 /* AddPocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPocket.swift; sourceTree = "<group>"; };
+		DC411632282D4A400055B9F7 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		DC7E0C2F282BFA2600FDF70C /* AddBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBag.swift; sourceTree = "<group>"; };
+		DC7E0C31282C2EB600FDF70C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		DCCD3A4F28352D590068C610 /* AddBagImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBagImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +96,8 @@
 			isa = PBXGroup;
 			children = (
 				7CADD9F2282BF41B00A98290 /* HomeScreen */,
+				DC7E0C31282C2EB600FDF70C /* Info.plist */,
+				DC7E0C2C282BF95B00FDF70C /* AddBagScreen */,
 				CB8250DB282BF2C9001ED786 /* BagLocationApp.swift */,
 				CB8250DD282BF2C9001ED786 /* ContentView.swift */,
 				CB8250DF282BF2CB001ED786 /* Assets.xcassets */,
@@ -104,6 +115,17 @@
 				CB8250E2282BF2CB001ED786 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DC7E0C2C282BF95B00FDF70C /* AddBagScreen */ = {
+			isa = PBXGroup;
+			children = (
+				DC7E0C2F282BFA2600FDF70C /* AddBag.swift */,
+				DC411632282D4A400055B9F7 /* Coordinator.swift */,
+				DC215E5E28334D5200A71627 /* AddPocket.swift */,
+				DCCD3A4F28352D590068C610 /* AddBagImage.swift */,
+			);
+			path = AddBagScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,12 +199,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB8250E5282BF2CB001ED786 /* Persistence.swift in Sources */,
+				DC215E5F28334D5200A71627 /* AddPocket.swift in Sources */,
 				CB8250DE282BF2C9001ED786 /* ContentView.swift in Sources */,
 				7CADD9FB282BF6AA00A98290 /* ClearTextField.swift in Sources */,
 				7CADD9F4282BF5B500A98290 /* HomeScreenView.swift in Sources */,
+				DC411633282D4A400055B9F7 /* Coordinator.swift in Sources */,
 				CB8250DC282BF2C9001ED786 /* BagLocationApp.swift in Sources */,
 				7CADD9F8282BF5D700A98290 /* CardView.swift in Sources */,
+				DCCD3A52283535360068C610 /* AddBagView.swift in Sources */,
 				CB8250E8282BF2CB001ED786 /* BagLocation.xcdatamodeld in Sources */,
+				DCCD3A5028352D590068C610 /* AddBagImage.swift in Sources */,
+				DC7E0C30282BFA2600FDF70C /* AddBag.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,11 +335,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BagLocation/Preview Content\"";
+				DEVELOPMENT_TEAM = 6HJGRNJXXR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BagLocation/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Take photos";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -323,8 +354,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.agusart.BagLocation;
+				PRODUCT_BUNDLE_IDENTIFIER = com.malikaal.BagLocation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -336,11 +368,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BagLocation/Preview Content\"";
+				DEVELOPMENT_TEAM = 6HJGRNJXXR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BagLocation/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Take photos";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -351,8 +387,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.agusart.BagLocation;
+				PRODUCT_BUNDLE_IDENTIFIER = com.malikaal.BagLocation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
