@@ -20,14 +20,14 @@ struct HomePageView: View {
                     Text("add item to bag compartment")
                 }
                 
-                Text("add item to tags")
+                Text("add item to bag compartment (sheet version)")
                     .onTapGesture {
                         isSheetPresented.toggle()
                     }
             }
         }.sheet(isPresented: $isSheetPresented){
             
-            AddItemSheetView()
+            BagCompartmentItemSheet()
         }
     }
 }

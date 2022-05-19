@@ -1,18 +1,15 @@
 //
-//  AddItemSheetView.swift
+//  BagCompartmentItemSheet.swift
 //  BagLocation
 //
-//  Created by Agus Budianto on 12/05/22.
+//  Created by Agus Budianto on 19/05/22.
 //
 
 import SwiftUI
 
-struct AddItemSheetView: View {
+struct BagCompartmentItemSheet: View {
     @Environment(\.presentationMode) var presentationMode
-    
-    @State var model = Model(rows: (1...20).map({ Model.Row(textContent:"Row \($0)") }))
-    
-    
+
     var body: some View {
         VStack(alignment: .leading){
             HStack{
@@ -31,28 +28,15 @@ struct AddItemSheetView: View {
             }.padding()
                 .background(Color("AddItemSheetToolbar"))
             
-            ElementList(model: $model)
-
+            BagCompartmentDetailsView(photoActionButtonText: "Add Image")
+                .ignoresSafeArea(.all, edges: .bottom)
             
         }
-        
-        
     }
 }
 
-struct AddItemSheetView_Previews: PreviewProvider {
+struct BagCompartmentItemSheet_Previews: PreviewProvider {
     static var previews: some View {
-        AddItemSheetView()
+        BagCompartmentItemSheet()
     }
 }
-
-
-
-
-
-
-
-
-
-
-
