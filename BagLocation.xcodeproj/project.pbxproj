@@ -28,6 +28,7 @@
 		CBD1E8C82836C7770002C461 /* SearchResultItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD1E8C52836C7770002C461 /* SearchResultItem.swift */; };
 		CBD1E8C92836C7770002C461 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD1E8C62836C7770002C461 /* SearchBarView.swift */; };
 		CBD1E8CA2836C7770002C461 /* ItemSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD1E8C72836C7770002C461 /* ItemSearchView.swift */; };
+		CBD1E8CD2836C8BC0002C461 /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = CBD1E8CC2836C8BC0002C461 /* SwiftUIX */; };
 		DC215E5F28334D5200A71627 /* AddPocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC215E5E28334D5200A71627 /* AddPocket.swift */; };
 		DC411633282D4A400055B9F7 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC411632282D4A400055B9F7 /* Coordinator.swift */; };
 		DC7E0C30282BFA2600FDF70C /* AddBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7E0C2F282BFA2600FDF70C /* AddBag.swift */; };
@@ -69,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBD1E8CD2836C8BC0002C461 /* SwiftUIX in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,6 +214,9 @@
 			dependencies = (
 			);
 			name = BagLocation;
+			packageProductDependencies = (
+				CBD1E8CC2836C8BC0002C461 /* SwiftUIX */,
+			);
 			productName = BagLocation;
 			productReference = CB8250D8282BF2C9001ED786 /* BagLocation.app */;
 			productType = "com.apple.product-type.application";
@@ -240,6 +245,9 @@
 				Base,
 			);
 			mainGroup = CB8250CF282BF2C9001ED786;
+			packageReferences = (
+				CBD1E8CB2836C8BC0002C461 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
+			);
 			productRefGroup = CB8250D9282BF2C9001ED786 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -497,6 +505,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CBD1E8CB2836C8BC0002C461 /* XCRemoteSwiftPackageReference "SwiftUIX" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftUIX/SwiftUIX";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CBD1E8CC2836C8BC0002C461 /* SwiftUIX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CBD1E8CB2836C8BC0002C461 /* XCRemoteSwiftPackageReference "SwiftUIX" */;
+			productName = SwiftUIX;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		CB8250E6282BF2CB001ED786 /* BagLocation.xcdatamodeld */ = {
