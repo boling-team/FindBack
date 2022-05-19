@@ -26,7 +26,7 @@ struct AddBag: View {
     
     init() {
 //        UIToolbar.appearance().barTintColor = UIColor(Color("TabViewColor"))
-        UITableView.appearance().backgroundColor = .clear
+//        UITableView.appearance().backgroundColor = .clear
         UITableView.appearance().sectionHeaderHeight = 3
         UITableView.appearance().sectionFooterHeight = 3
         
@@ -34,15 +34,14 @@ struct AddBag: View {
     
     var body: some View {
         NavigationView{
-            ZStack{
                 VStack {
                     List{
-                        Text("Bag Detail")
+                       
+                        Section(header:  Text("Bag Detail")
                             .font(Font.system(.title2, design: .serif))
                             .foregroundColor(.black)
                             .bold()
-                            .padding(.leading, -12.0)
-                        Section(){
+                            .padding(.leading, -12.0)){
                             
                                 HStack{
                                     if (image==nil){
@@ -71,6 +70,7 @@ struct AddBag: View {
                                     }else{
                                         ZStack {
                                             image?.resizable()
+                                                .clipped()
                                                 .frame(width: 100, height: 100)
                                                 .cornerRadius(5)
                                                 .padding(.all, 0.0)
@@ -86,32 +86,33 @@ struct AddBag: View {
                                         .padding(.leading, 5.0)
                                     
                                     
-//                                    if (image==nil){
-//                                        
-//                                    }else{
-//                                        Button(action: {
-//                                            self.showCaptureImageView.toggle()
-//                                        }) {
-//                                            Text("Change photo")
-//                                        }
-//                                    }
+                                    //                                    if (image==nil){
+                                    //
+                                    //                                    }else{
+                                    //                                        Button(action: {
+                                    //                                            self.showCaptureImageView.toggle()
+                                    //                                        }) {
+                                    //                                            Text("Change photo")
+                                    //                                        }
+                                    //                                    }
                                 }
                                 .listRowInsets(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
-                                
-                                
-                                
-                                
-                                
-                                
-                        }.listRowBackground(Color("IjoMuda"))
+                            
+                            
+                            
+                            
+                            
+                            
+                        }
+                            .listRowBackground(Color("IjoMuda"))
+                            .textCase(nil)
                         
-                        Section{
-                            Text("Compartment List")
+                        Section(header: Text("Compartment List")
                                 .font(Font.system(.title2, design: .serif))
                                 .foregroundColor(.black)
                                 .bold()
-                                .padding(.leading, -12.0)
-                        }.padding(.all, 0.0).listRowBackground(Color(.white))
+                                .padding(.leading, -12.0)){
+                        }
                         
                         ForEach((1...9).reversed(), id: \.self) { i in
                             CompartmentView()
@@ -123,40 +124,43 @@ struct AddBag: View {
                         
                         
                     }
-                    .padding(.bottom, 19.0).listStyle(.insetGrouped)
-//                    .safeAreaInset(edge: .bottom) {
-//
-//                        HStack{
-//                            Spacer()
-//                            Button(action : {
-//                                print("Pressed")
-//                            })
-//                            {
-//                                Label("Add Compartment", systemImage: "plus.circle.fill")
-//                                    .font(Font.custom("Serif",size: 22))
-//                                    .padding()
-//                                    .foregroundColor(Color("IjoTua"))
-//                            }
-//                            .padding()
-//
-//
-//                            Spacer()
-//                        }
-//                        .padding(.leading)
-//                        .background(Color("TabViewColor"))
-//                        .frame(height: 70)
-//
-//                    }.ignoresSafeArea(.all, edges: .bottom)
+                    .listStyle(.insetGrouped)
+                    //                    .safeAreaInset(edge: .bottom) {
+                    //
+                    //                        HStack{
+                    //                            Spacer()
+                    //                            Button(action : {
+                    //                                print("Pressed")
+                    //                            })
+                    //                            {
+                    //                                Label("Add Compartment", systemImage: "plus.circle.fill")
+                    //                                    .font(Font.custom("Serif",size: 22))
+                    //                                    .padding()
+                    //                                    .foregroundColor(Color("IjoTua"))
+                    //                            }
+                    //                            .padding()
+                    //
+                    //
+                    //                            Spacer()
+                    //                        }
+                    //                        .padding(.leading)
+                    //                        .background(Color("TabViewColor"))
+                    //                        .frame(height: 70)
+                    //
+                    //                    }.ignoresSafeArea(.all, edges: .bottom)
                 }
-                if (showCaptureImageView) {
-                    CaptureImageView(isShown: $showCaptureImageView, image: $image)
-                }
-                
-            }.navigationTitle("Add Bag")
-                .foregroundColor(Color(red: 0.1, green: 0.5, blue: 0.9))
+            .navigationTitle("Add Bag")
+//                .foregroundColor(Color(red: 0.1, green: 0.5, blue: 0.9))
                 .navigationBarTitleDisplayMode(.inline)
-                .navigationBarItems(
-                    leading:
+//                .navigationBarItems(
+//                    leading:
+//                       ,
+//                    trailing:
+//
+//                )
+//                .background(.white)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
                         Button(action:{
                             print("Button Cancel Pressed")
                         }){
@@ -168,8 +172,10 @@ struct AddBag: View {
                                 .foregroundColor(Color("IjoTua"))
                                 .bold()
                             
-                        },
-                    trailing:
+                        }
+                    }
+                    
+                    ToolbarItem(placement: .navigationBarTrailing) {
                         Button(action:{
                             print("Button Save Pressed")
                         }){
@@ -177,9 +183,8 @@ struct AddBag: View {
                                 .foregroundColor(Color("IjoTua"))
                                 .bold()
                         }
-                )
-                .background(.white)
-                .toolbar {
+                    }
+                    
                     ToolbarItemGroup(placement: .bottomBar) {
                         
                         HStack {
@@ -195,7 +200,7 @@ struct AddBag: View {
                                     .foregroundColor(Color("IjoTua"))
                                     .bold()
                                     .font(.system(size: 22))
-                        }
+                            }
                         }
                         Spacer()
                     }
