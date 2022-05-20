@@ -5,14 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c2642883-6f34-41e9-ad9b-4a94bde7893a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/BagLocation/AddBagScreen/views/view.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_12_05_22_21_07__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BagLocation.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/BagLocation.xcodeproj/project.pbxproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BagLocation.xcodeproj/project.xcworkspace/xcuserdata/agusbudianto.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/BagLocation.xcodeproj/project.xcworkspace/xcuserdata/agusbudianto.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BagLocation/BagCompartment/BagCompartment.swift" beforeDir="false" afterPath="$PROJECT_DIR$/BagLocation/BagCompartment/BagCompartment.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BagLocation/BagCompartment/BagCompartmentPage.swift" beforeDir="false" afterPath="$PROJECT_DIR$/BagLocation/BagCompartment/BagCompartmentPage.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BagLocation/BagCompartment/BagCompartmentSheet.swift" beforeDir="false" afterPath="$PROJECT_DIR$/BagLocation/BagCompartment/BagCompartmentSheet.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BagLocation/BagCompartment/views/component.swift" beforeDir="false" afterPath="$PROJECT_DIR$/BagLocation/BagCompartment/views/component.swift" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="iphoneos_00008110-0004090E3E12801E" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="iphonesimulator_16017AF5-B819-4255-8705-B26ED79DA589" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -71,6 +80,7 @@
       <workItem from="1652364402576" duration="842000" />
       <workItem from="1652365285054" duration="60000" />
       <workItem from="1652365348567" duration="3000" />
+      <workItem from="1653041746064" duration="228000" />
     </task>
     <servers />
   </component>

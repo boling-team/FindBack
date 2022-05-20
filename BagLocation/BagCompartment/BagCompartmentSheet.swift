@@ -9,28 +9,35 @@ import SwiftUI
 
 struct BagCompartmentItemSheet: View {
     @Environment(\.presentationMode) var presentationMode
-
+    @State var showCaptureImageView: Bool = false
+    @State var image: Image? = nil
+    
     var body: some View {
-        VStack(alignment: .leading){
-            HStack{
-                Label("Cancel", systemImage: "chevron.backward")
-                    .foregroundColor(.blue)
-                    .onTapGesture {
-                        presentationMode.dismiss()
+        ZStack{
+            if (showCaptureImageView) {
+                CaptureImageView(isShown: $showCaptureImageView, image: $image)
+            }
+            
+            VStack(alignment: .leading){
+                HStack{
+                    Label("Cancel", systemImage: "chevron.backward")
+                        .foregroundColor(.blue)
+                        .onTapGesture {
+                            presentationMode.dismiss()
+                        }
+                    
+                    Spacer()
+                    Text("Saku Kiri")
+                    Spacer()
+                    Button("Save"){
+                        showCaptureImageView.toggle()
                     }
+                }.padding()
                 
-                Spacer()
-                Text("Saku Kiri")
-                Spacer()
-                Button("Save"){
-                    presentationMode.dismiss()
-                }
-            }.padding()
-                .background(Color("AddItemSheetToolbar"))
-            
-            BagCompartmentDetailsView(photoActionButtonText: "Add Image")
-                .ignoresSafeArea(.all, edges: .bottom)
-            
+                BagCompartmentDetailsView(photoActionButtonText: image == nil ? "Add Image" : "Change Image")
+                    .ignoresSafeArea(.all, edges: .bottom)
+                
+            }
         }
     }
 }

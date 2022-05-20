@@ -23,25 +23,25 @@ struct AddMoreItem: View {
                     .foregroundColor(.white)
             }
             Spacer()
-        }.background(.red)
+        }.background(Color("IjoTua"))
             .frame(height: 82)
     }
 }
 
 
 struct ImagePlaceholder: View {
-    var compartmentImage: UIImage?
+    var compartmentImage: Image?
 
     var body: some View {
         ZStack(alignment: .center){
             if (compartmentImage != nil) {
-                Image(uiImage: compartmentImage!)
+                compartmentImage?
                     .resizable()
                     .scaledToFit()
                     .background(Rectangle().strokeBorder())
             } else{
                 Rectangle()
-                    .fill(.red)
+                    .fill(Color("IjoTua"))
                     .cornerRadius(12)
                 
                 Image(systemName: "photo")
@@ -67,8 +67,10 @@ struct AddItemCompartmentCancelButton: View {
 }
 
 struct SaveItemCompartmentButton: View {
+    @Binding var showCaptureImageView: Bool
     var body: some View {
         Button(action: {
+            showCaptureImageView.toggle()
         }) {
             Text("Save").foregroundColor(.red)
         }

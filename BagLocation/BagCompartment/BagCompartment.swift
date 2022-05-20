@@ -17,12 +17,15 @@ struct BagCompartmentDetailsView: View {
     }
     var photoActionButtonText: String
     @State var model = Model(rows: (1...5).map({ Model.Row(textContent:"Row \($0)") }))
+    @State var showCaptureImageView: Bool = false
+    @State var image: Image? = nil
     
     var body: some View {
+        ZStack{
         VStack{
-            ImagePlaceholder()
+            ImagePlaceholder(compartmentImage: image)
             Button(action : {
-                
+                showCaptureImageView.toggle()
             }){
                 HStack{
                     Text(photoActionButtonText)
@@ -40,6 +43,10 @@ struct BagCompartmentDetailsView: View {
             Divider()
             ElementList(model: self.$model).safeAreaInset(edge: .bottom) {
                 AddMoreItem(model: self.$model)
+            }
+        }
+            if (showCaptureImageView) {
+              CaptureImageView(isShown: $showCaptureImageView, image: $image)
             }
         }
     }
