@@ -30,20 +30,15 @@ struct HomeScreenView: View {
     var body: some View {
         NavigationView {
             List{
-                ForEach(bags, id: \.self) {
+                ForEach(bags, id: \.wrappedBagID) {
+                    bag in
                     Section {
                         CardView()
                     }
                     .listRowBackground(Color("IjoMuda"))
                 }
-                .onDelete(perform: deleteBag)
-//                ForEach((1...9).reversed(), id: \.self) { i in
-//                    Section{
-//                        CardView()
-//                    }.listRowBackground(Color("IjoMuda"))
-//                }
-//                .onDelete(perform: <#T##Optional<(Foundation.IndexSet) -> Void>#>)
-            }
+//                .onDelete(perform: deleteBag)
+          }
             .listStyle(.insetGrouped)
             .searchable(text: $searchText, prompt: "Search item") {
                 //TODO: LOOP ITEM LIST WITH LOCATION INFORMATION PSEUDOCODE
@@ -51,18 +46,15 @@ struct HomeScreenView: View {
                 //      SHOW CARDVIEW CONTAINING THE INFORMATION
             }
             .overlay {
-//                if (itemList.count == 0) {
-//                    VStack(spacing: 20) {
-//                        //MARK: JIKA TIDAK MEMBUTUHKAN FOTO BISA DICOMMENT
-//                        Image("EmptyBag")
-//                            .resizable()
-//                            .scaledToFit()
-//                        Text("Your Bag List is empty. \nClick + to add new bag")
-//                            .multilineTextAlignment(.center)
-//                            .padding(.bottom, 40)
-//                            .foregroundColor(.gray)
-//                    }
-//                }
+                if (bags.count == 0) {
+                    VStack(spacing: 20) {
+                        //MARK: JIKA TIDAK MEMBUTUHKAN FOTO BISA DICOMMENT
+                        Text("Your Bag List is empty. \nClick + to add new bag")
+                            .multilineTextAlignment(.center)
+                            .padding(.bottom, 40)
+                            .foregroundColor(.gray)
+                    }
+                }
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {

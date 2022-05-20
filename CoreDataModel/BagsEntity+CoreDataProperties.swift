@@ -29,11 +29,11 @@ extension BagsEntity {
         bagID ?? UUID()
     }
     
-    public var compartmentList: [Compartments] {
-        let setOfCompartment = compartments as? Set<Compartments> ?? []
+    public var compartmentList: [CompartmentsEntity] {
+        let setOfCompartment = compartments as? Set<CompartmentsEntity> ?? []
         
         return setOfCompartment.sorted{
-            $0.compartmentName < $1.compartmentName
+            $0.compartmentName! < $1.compartmentName!
         }
     }
 }

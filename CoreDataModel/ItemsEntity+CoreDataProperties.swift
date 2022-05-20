@@ -18,7 +18,7 @@ extension ItemsEntity {
 
     @NSManaged public var itemID: UUID?
     @NSManaged public var itemName: String?
-    @NSManaged public var compartment: ItemsEntity?
+    @NSManaged public var compartment: CompartmentsEntity?
 
 }
 
