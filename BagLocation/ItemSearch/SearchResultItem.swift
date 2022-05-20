@@ -28,15 +28,22 @@ struct ResultItemCard: View {
                 .scaledToFit()
                 .cornerRadius(6)
                 .frame(width: 120, height: 120)
+                .padding()
             VStack(alignment: .trailing){
                 Text("Minyak Goreng").frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.top, 20)
+                    .font(.system(size: 18, design: .serif))
                 Text("front Pocket").frame(maxWidth: .infinity, alignment: .leading)
+                    .font(.subheadline)
+                    .opacity(0.7)
+                   
                 Spacer()
                 Text("Agus Bag")
                     .padding(.bottom, 30)
+                    .font(.body)
+                    .opacity(0.7)
                     .frame(maxWidth: .infinity, alignment: .leading)
-            }.maxWidth(.infinity)
+            }
         }.frame(width: 390, height: 140)
     }
 }
