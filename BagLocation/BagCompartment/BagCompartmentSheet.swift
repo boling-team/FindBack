@@ -10,12 +10,13 @@ import SwiftUI
 struct BagCompartmentItemSheet: View {
     @Environment(\.presentationMode) var presentationMode
     @State var showCaptureImageView: Bool = false
-    @State var image: Image? = nil
+    @Binding var bagCompartment: TemporaryCompartment
+    @State var tmpCompartment: TemporaryCompartment
     
     var body: some View {
         ZStack{
             if (showCaptureImageView) {
-                CaptureImageView(isShown: $showCaptureImageView, image: $image)
+                CaptureImageView(isShown: $showCaptureImageView, image: $tmpCompartment.compartmentImage)
             }
             
             VStack(alignment: .leading){
@@ -30,20 +31,23 @@ struct BagCompartmentItemSheet: View {
                     Text("Saku Kiri")
                     Spacer()
                     Button("Save"){
-                        showCaptureImageView.toggle()
+                        bagCompartment.items = tmpCompartment.items
+                        bagCompartment.compartmentImage = tmpCompartment.compartmentImage
+                        bagCompartment.compartmentName = tmpCompartment.compartmentName
+                        presentationMode.dismiss()
                     }
                 }.padding()
                 
-                BagCompartmentDetailsView(photoActionButtonText: image == nil ? "Add Image" : "Change Image")
+                BagCompartmentDetailsView(photoActionButtonText: tmpCompartment.compartmentImage == nil ? "Add Image" : "Change Image", tmpModel: $tmpCompartment)
                     .ignoresSafeArea(.all, edges: .bottom)
                 
             }
         }
     }
 }
-
-struct BagCompartmentItemSheet_Previews: PreviewProvider {
-    static var previews: some View {
-        BagCompartmentItemSheet()
-    }
-}
+//
+//struct BagCompartmentItemSheet_Previews: PreviewProvider {
+//    static var previews: some View {
+//        BagCompartmentItemSheet()
+//    }
+//}

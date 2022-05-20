@@ -9,21 +9,23 @@ import SwiftUI
 
 struct BagCompartmentDetailsView: View {
     
-    init(photoActionButtonText: String){
+    init(photoActionButtonText: String, tmpModel: Binding<TemporaryCompartment>){
         self.photoActionButtonText = photoActionButtonText
+        self._tmpModel = tmpModel
+
         UITableView.appearance().contentInset.top = 0
         
         
     }
     var photoActionButtonText: String
-    @State var model = Model(rows: (1...5).map({ Model.Row(textContent:"Row \($0)") }))
+    @Binding var tmpModel: TemporaryCompartment
+    
     @State var showCaptureImageView: Bool = false
-    @State var image: Image? = nil
     
     var body: some View {
         ZStack{
         VStack{
-            ImagePlaceholder(compartmentImage: image)
+            ImagePlaceholder(compartmentImage: tmpModel.compartmentImage ?? nil)
             Button(action : {
                 showCaptureImageView.toggle()
             }){
@@ -41,12 +43,12 @@ struct BagCompartmentDetailsView: View {
                 Spacer()
             }
             Divider()
-            ElementList(model: self.$model).safeAreaInset(edge: .bottom) {
-                AddMoreItem(model: self.$model)
+            ElementList(model: self.$tmpModel).safeAreaInset(edge: .bottom) {
+                AddMoreItem(model: self.$tmpModel)
             }
         }
             if (showCaptureImageView) {
-              CaptureImageView(isShown: $showCaptureImageView, image: $image)
+                CaptureImageView(isShown: $showCaptureImageView, image: $tmpModel.compartmentImage)
             }
         }
     }
@@ -57,11 +59,11 @@ struct BagCompartmentDetailsView: View {
 
 
 
-struct BagCompartmentDetailsView_Previews: PreviewProvider {
-    static var previews: some View {
-        BagCompartmentDetailsView(photoActionButtonText: "Add Image")
-    }
-}
+//struct BagCompartmentDetailsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        BagCompartmentDetailsView(photoActionButtonText: "Add Image")
+//    }
+//}
 
 
 

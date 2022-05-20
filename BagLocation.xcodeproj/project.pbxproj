@@ -27,7 +27,6 @@
 		CB8250E5282BF2CB001ED786 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8250E4282BF2CB001ED786 /* Persistence.swift */; };
 		CB8250E8282BF2CB001ED786 /* BagLocation.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB8250E6282BF2CB001ED786 /* BagLocation.xcdatamodeld */; };
 		CBD1E8BE2836C7650002C461 /* BagCompartmentPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD1E8B72836C7650002C461 /* BagCompartmentPage.swift */; };
-		CBD1E8BF2836C7650002C461 /* BagAddCompartment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD1E8B82836C7650002C461 /* BagAddCompartment.swift */; };
 		CBD1E8C02836C7650002C461 /* BagCompartmentSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD1E8B92836C7650002C461 /* BagCompartmentSheet.swift */; };
 		CBD1E8C12836C7650002C461 /* list.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD1E8BB2836C7650002C461 /* list.swift */; };
 		CBD1E8C22836C7650002C461 /* component.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD1E8BC2836C7650002C461 /* component.swift */; };
@@ -65,7 +64,6 @@
 		CB8250E4282BF2CB001ED786 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		CB8250E7282BF2CB001ED786 /* BagLocation.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BagLocation.xcdatamodel; sourceTree = "<group>"; };
 		CBD1E8B72836C7650002C461 /* BagCompartmentPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BagCompartmentPage.swift; sourceTree = "<group>"; };
-		CBD1E8B82836C7650002C461 /* BagAddCompartment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BagAddCompartment.swift; sourceTree = "<group>"; };
 		CBD1E8B92836C7650002C461 /* BagCompartmentSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BagCompartmentSheet.swift; sourceTree = "<group>"; };
 		CBD1E8BB2836C7650002C461 /* list.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = list.swift; sourceTree = "<group>"; };
 		CBD1E8BC2836C7650002C461 /* component.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = component.swift; sourceTree = "<group>"; };
@@ -199,7 +197,6 @@
 			isa = PBXGroup;
 			children = (
 				CBD1E8B72836C7650002C461 /* BagCompartmentPage.swift */,
-				CBD1E8B82836C7650002C461 /* BagAddCompartment.swift */,
 				CBD1E8B92836C7650002C461 /* BagCompartmentSheet.swift */,
 				CBD1E8BA2836C7650002C461 /* views */,
 				CBD1E8BD2836C7650002C461 /* BagCompartment.swift */,
@@ -349,7 +346,6 @@
 				DC7E0C30282BFA2600FDF70C /* AddBag.swift in Sources */,
 				CBD1E8C82836C7770002C461 /* SearchResultItem.swift in Sources */,
 				CBD1E8C92836C7770002C461 /* SearchBarView.swift in Sources */,
-				CBD1E8BF2836C7650002C461 /* BagAddCompartment.swift in Sources */,
 				7CD1F0E2283743E000F7722E /* ItemsEntity+CoreDataProperties.swift in Sources */,
 				CBD1E8C12836C7650002C461 /* list.swift in Sources */,
 				CBD1E8C22836C7650002C461 /* component.swift in Sources */,
@@ -482,7 +478,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BagLocation/Preview Content\"";
-				DEVELOPMENT_TEAM = 9X8MNF3J54;
+				DEVELOPMENT_TEAM = 89TMJ964L4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BagLocation/Info.plist;
@@ -515,7 +511,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BagLocation/Preview Content\"";
-				DEVELOPMENT_TEAM = 9X8MNF3J54;
+				DEVELOPMENT_TEAM = 89TMJ964L4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BagLocation/Info.plist;

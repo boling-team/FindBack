@@ -10,12 +10,12 @@ import SwiftUI
 
 
 struct AddMoreItem: View {
-    @Binding var model: Model
+    @Binding var model: TemporaryCompartment
 
     var body: some View {
         HStack{
             Button(action : {
-                model.rows.append(Model.Row(textContent: "new items"))
+                model.items.append(TemporaryItem())
             })
             {
                 Label("Add More Item", systemImage: "plus.circle")
@@ -30,12 +30,12 @@ struct AddMoreItem: View {
 
 
 struct ImagePlaceholder: View {
-    var compartmentImage: Image?
+    var compartmentImage: UIImage?
 
     var body: some View {
         ZStack(alignment: .center){
             if (compartmentImage != nil) {
-                compartmentImage?
+                Image(uiImage: compartmentImage!)
                     .resizable()
                     .scaledToFit()
                     .background(Rectangle().strokeBorder())

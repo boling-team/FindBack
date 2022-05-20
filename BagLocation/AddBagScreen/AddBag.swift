@@ -129,6 +129,7 @@ struct AddBag: View {
                             newCompartment.compartmentID = compartment.compartmentID
                             newCompartment.bag = newBag
                             // TODO: UBAH FOTO JADI BINARY
+                            newCompartment.compartmentImage = compartment.compartmentImage?.jpegData(compressionQuality: 1.0)
                             
                             for item in compartment.items {
                                 let newItem = ItemsEntity(context: viewContext)
@@ -179,44 +180,6 @@ struct AddBag: View {
     }
 }
 
-struct CompartmentView: View{
-    // MARK: BINDING
-    @Binding var compartment: TemporaryCompartment
-    
-    @State private var showingSheet = false
-    var body: some View {
-        Section{
-            Button(action : {
-                showingSheet.toggle()
-            })
-            {
-                HStack{
-                    Image("empty")
-                        .resizable()
-                        .cornerRadius(5)
-                        .frame(width: 50, height: 50)
-                    VStack(alignment: .leading){
-                        TextField("Enter Compartment Name", text: $compartment.compartmentName)
-                            .font(Font.system(.headline, design: .serif))
-                            .foregroundColor(.black)
-                            .padding(.leading, 5.0)
-                        Text("\(compartment.items.count) Items")
-                            .foregroundColor(.gray)
-                            .multilineTextAlignment(.leading)
-                            .padding(.leading, 5.0)
-                    }
-                    Spacer()
-                    Image(systemName: "chevron.right")
-                        .foregroundColor(.gray)
-                }
-            }
-            .padding(.all, 3.0)
-            .sheet(isPresented: $showingSheet) {
-                AddPocket()
-            }
-        }
-    }
-}
 
 struct AddBag_Previews: PreviewProvider {
     static var previews: some View {
@@ -228,7 +191,7 @@ struct AddBag_Previews: PreviewProvider {
 struct TemporaryCompartment: Equatable {
     var compartmentID: UUID = UUID()
     var compartmentName: String = ""
-    var compartmentImage: UIImage = UIImage(systemName: "camera")!
+    var compartmentImage: UIImage? = nil
     
     var items: [TemporaryItem] = []
 }
