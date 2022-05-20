@@ -121,6 +121,7 @@ struct AddBag: View {
                         let newBag = BagsEntity(context: viewContext)
                         newBag.bagID = bag.bagID
                         newBag.bagName = bag.bagName
+                        newBag.bagImage = bag.bagImage?.jpegData(compressionQuality: 1.0)
                         
                         for compartment in bag.compartments {
                             let newCompartment = CompartmentsEntity(context: viewContext)
