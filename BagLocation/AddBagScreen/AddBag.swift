@@ -23,6 +23,7 @@ struct AddBag: View {
     @State var showCaptureImageView: Bool = false
     @State var bag: Bag = Bag()
     @State private var showingSheet = false
+    @Environment(\.dismiss) var dismiss
     
     init() {
 //        UIToolbar.appearance().barTintColor = UIColor(Color("TabViewColor"))
@@ -96,13 +97,7 @@ struct AddBag: View {
                                     //                                        }
                                     //                                    }
                                 }
-                                .listRowInsets(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
-                            
-                            
-                            
-                            
-                            
-                            
+                                .listRowInsets(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))     
                         }
                             .listRowBackground(Color("IjoMuda"))
                             .textCase(nil)
@@ -116,15 +111,8 @@ struct AddBag: View {
                         
                         ForEach((1...9).reversed(), id: \.self) { i in
                             CompartmentView()
-                            
-                        }
-                        
-                        
-                        .listRowBackground(Color("IjoMuda"))
-                        
-                        
-                    }
-                    .listStyle(.insetGrouped)
+                        }.listRowBackground(Color("IjoMuda"))
+                    }.listStyle(.insetGrouped)
                     //                    .safeAreaInset(edge: .bottom) {
                     //
                     //                        HStack{
@@ -163,6 +151,7 @@ struct AddBag: View {
                     ToolbarItem(placement: .navigationBarLeading) {
                         Button(action:{
                             print("Button Cancel Pressed")
+                            dismiss()
                         }){
                             //                            Image(systemName: "chevron.backward")
                             //                                .foregroundColor(Color("IjoTua"))

@@ -10,12 +10,17 @@ import SwiftUI
 @main
 struct BagLocationApp: App {
     let persistenceController = PersistenceController.shared
-
+    @AppStorage("FirstTimeUser") var firstTimeUser: Bool = true
+    
     var body: some Scene {
-        WindowGroup {
-            OnboardingMainScreen()
-//            ContentView()
-//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            WindowGroup {
+                HomeScreenView()
+                    .fullScreenCover(isPresented: $firstTimeUser) {
+                        OnboardingMainScreen()
+                    }
+    //            ContentView()
+    //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            }
         }
     }
-}
+

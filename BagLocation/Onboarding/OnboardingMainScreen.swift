@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct OnboardingMainScreen: View {
-    
+    @Environment(\.dismiss) var dismiss
     @State var selectedPage = 0
     var onboardItem: [OnboarModel]
     
@@ -29,11 +29,15 @@ struct OnboardingMainScreen: View {
             
             VStack{
                 Spacer(minLength: 50)
-                HStack{
-                    Spacer()
-                    Text("Skip")
-                        .font(Font.system(.headline, design: .serif))
-                        .padding()
+                Button(action:{
+                    dismiss()
+                }){
+                    HStack{
+                        Spacer()
+                        Text("Skip")
+                            .font(Font.system(.headline, design: .serif))
+                            .padding()
+                    }
                 }
                 
                 TabView(selection: $selectedPage)

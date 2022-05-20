@@ -12,17 +12,24 @@ struct HomeScreenView: View {
     @State var searchText: String = ""
     //    @State var showSearch: Bool = true
     @State var itemList = [1,2,3,4]
+    @State private var showingSheet = false
+    
+    init(){
+        UITableView.appearance().sectionHeaderHeight = 3
+        UITableView.appearance().sectionFooterHeight = 3
+    }
     
     var body: some View {
         NavigationView {
             ZStack {
                 VStack {
                     List{
-                        CardView()
-                        CardView()
-                        CardView()
-                        CardView()
-                    }
+                        ForEach((1...9).reversed(), id: \.self) { i in
+                            Section{
+                                CardView()
+                            }.listRowBackground(Color("IjoMuda"))
+                        }
+                    }.listStyle(.insetGrouped)
                     .searchable(text: $searchText, prompt: "Search item") {
                         //TODO: LOOP ITEM LIST WITH LOCATION INFORMATION PSEUDOCODE
                         // FOREACH ITEM IN ITEM_LIST
@@ -53,9 +60,12 @@ struct HomeScreenView: View {
                         }
                         ToolbarItem(placement: .navigationBarTrailing) {
                             Button {
-                                
+                                showingSheet.toggle()
                             } label: {
                                 Image(systemName: "plus")
+                            }
+                            .sheet(isPresented: $showingSheet) {
+                                AddBag()
                             }
                         }
                     }
