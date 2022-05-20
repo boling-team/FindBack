@@ -7,21 +7,15 @@
 
 import SwiftUI
 
-struct Model {
-    struct Row : Identifiable {
-        var textContent = ""
-        let id = UUID()
-    }
-    var rows: [Row]
-}
+
 
 
 struct ElementCell: View {
-    @Binding var row: Model.Row
+    @Binding var row: TemporaryItem
     var body: some View {
         VStack(alignment: .leading){
             Spacer()
-            Text(row.textContent).padding(.leading)
+            TextField("type item name...", text: $row.itemName).padding(.leading)
             Spacer()
             Divider()
         }.listRowSeparator(.hidden)
@@ -32,18 +26,18 @@ struct ElementCell: View {
 
 
 struct ElementList: View {
-    @Binding var model: Model
+    @Binding var model: TemporaryCompartment
     var body: some View {
             List {
-                ForEach($model.rows) {
+                ForEach($model.items, id: \.itemID) {
                     item in
                     ElementCell(row:item)
                         .listRowSeparator(.hidden)
                         .listRowInsets(.init())
                         .swipeActions {
                             Button(action: {
-                                model.rows = model.rows.filter{
-                                    $0.id != item.id
+                                model.items = model.items.filter{
+                                    $0.itemID != item.itemID.wrappedValue
                                 }
                             }) {
                                 Text("Delete").foregroundColor(.red).background(.black)

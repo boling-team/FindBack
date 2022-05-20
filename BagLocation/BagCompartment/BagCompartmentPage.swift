@@ -8,13 +8,21 @@
 import SwiftUI
 
 struct BagCompartmentItemView: View {
+    @State var showCaptureImageView: Bool = false
+    @State var image: UIImage? = nil
+    
     var body: some View {
-        BagCompartmentDetailsView(photoActionButtonText: "Add Image")
-        .navigationBarTitle(Text("Detail View"), displayMode: .inline)
-        .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: AddItemCompartmentCancelButton(), trailing:  SaveItemCompartmentButton())
-        .ignoresSafeArea(.all, edges: .bottom)
-        
+        ZStack{
+//            if (showCaptureImageView) {
+//              CaptureImageView(isShown: $showCaptureImageView, image: $image)
+//            }
+//            
+//        BagCompartmentDetailsView(photoActionButtonText: "Add Image")
+//        .navigationBarTitle(Text("Detail View"), displayMode: .inline)
+//        .navigationBarBackButtonHidden(true)
+//        .navigationBarItems(leading: AddItemCompartmentCancelButton(), trailing:  SaveItemCompartmentButton(showCaptureImageView: $showCaptureImageView))
+//        .ignoresSafeArea(.all, edges: .bottom)
+        }
         
     }
 }

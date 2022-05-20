@@ -10,12 +10,12 @@ import SwiftUI
 
 
 struct AddMoreItem: View {
-    @Binding var model: Model
+    @Binding var model: TemporaryCompartment
 
     var body: some View {
         HStack{
             Button(action : {
-                model.rows.append(Model.Row(textContent: "new items"))
+                model.items.append(TemporaryItem())
             })
             {
                 Label("Add More Item", systemImage: "plus.circle")
@@ -23,7 +23,7 @@ struct AddMoreItem: View {
                     .foregroundColor(.white)
             }
             Spacer()
-        }.background(.red)
+        }.background(Color("IjoTua"))
             .frame(height: 82)
     }
 }
@@ -41,7 +41,7 @@ struct ImagePlaceholder: View {
                     .background(Rectangle().strokeBorder())
             } else{
                 Rectangle()
-                    .fill(.red)
+                    .fill(Color("IjoTua"))
                     .cornerRadius(12)
                 
                 Image(systemName: "photo")
@@ -67,8 +67,10 @@ struct AddItemCompartmentCancelButton: View {
 }
 
 struct SaveItemCompartmentButton: View {
+    @Binding var showCaptureImageView: Bool
     var body: some View {
         Button(action: {
+            showCaptureImageView.toggle()
         }) {
             Text("Save").foregroundColor(.red)
         }
