@@ -9,15 +9,24 @@ import SwiftUI
 
 struct AddBagImage: View {
     @State var showCaptureImageView: Bool = false
-    @State var image: Image? = nil
+    @Binding var image: UIImage?
+    
+    @State var capturedImage: UIImage?
+    
     @Environment(\.dismiss) var dismiss
+    
+    init(image: Binding<UIImage?>) {
+        self._image = image
+        
+        self._capturedImage = State(initialValue: image.wrappedValue)
+    }
     
     var body: some View {
         ZStack {
             NavigationView{
                 ZStack {
                     VStack {
-                        if (image==nil){
+                        if (capturedImage==nil){
                             ZStack{
                                 Rectangle()
                                     .fill(Color("IjoTua"))
@@ -31,7 +40,8 @@ struct AddBagImage: View {
                             }
                         }else{
                             ZStack {
-                                image?.resizable()
+                                Image(uiImage: capturedImage!)
+                                    .resizable()
                                     .frame(width: 338, height: 338)
                                     .cornerRadius(5)
                                     .padding(.all, 0.0)
@@ -48,7 +58,8 @@ struct AddBagImage: View {
                                     .cornerRadius(12)
                                     .frame(width: 338, height: 50)
                                 
-                                Text(image==nil ? "Take Photo" : "Change Photo")
+                                //                                Text(image==nil ? "Take Photo" : "Change Photo")
+                                Text("Take Photo")
                                     .bold()
                                     .font(.system(size: 22))
                                     .foregroundColor(.white)
@@ -61,31 +72,37 @@ struct AddBagImage: View {
                 }
                 .navigationBarItems(
                     leading:
-                        Button(action:{
-                            dismiss()
-                        }){
-                            HStack{
-                                Image(systemName: "chevron.backward")
-                                    .renderingMode(.original) // <1>
-                                    .padding(.trailing, 0.0)
-                                    .font(.system(size: 17))
-                                Text("cancel")
-                                    .padding(.leading, 0.0)
-                            }
-                        
-                        }.foregroundColor(Color("IjoTua")),
-                    trailing:
-                        Button(action:{
-                            print("Button Save Pressed")
-                        }){
-                            Text("Save")
-                                .foregroundColor(Color("IjoTua"))
-                                
+                        // MARK: CANCEL
+                    Button(action:{
+                        dismiss()
+                    }){
+                        HStack{
+                            Image(systemName: "chevron.backward")
+                                .renderingMode(.original) // <1>
+                                .padding(.trailing, 0.0)
+                                .font(.system(size: 17))
+                            Text("cancel")
+                                .padding(.leading, 0.0)
                         }
+                        
+                    }.foregroundColor(Color("IjoTua")),
+                    trailing:
+                        // MARK: SAVE
+                    Button(action:{
+                        print("Button Save Pressed")
+                        image = capturedImage
+                        
+                        dismiss()
+                    }){
+                        Text("Save")
+                            .foregroundColor(Color("IjoTua"))
+                        
+                    }
                 )
             }
             if (showCaptureImageView) {
-              CaptureImageView(isShown: $showCaptureImageView, image: $image)
+                CaptureImageView(isShown: $showCaptureImageView, image: $capturedImage)
+                    .ignoresSafeArea(.all, edges: .all)
             }
         }
     }
@@ -95,7 +112,7 @@ struct CaptureImageView {
     
     /// MARK: - Properties
     @Binding var isShown: Bool
-    @Binding var image: Image?
+    @Binding var image: UIImage?
     
     func makeCoordinator() -> Coordinator {
         return Coordinator(isShown: $isShown, image: $image)
@@ -106,7 +123,7 @@ extension CaptureImageView: UIViewControllerRepresentable {
     func makeUIViewController(context: UIViewControllerRepresentableContext<CaptureImageView>) -> UIImagePickerController {
         let picker = UIImagePickerController()
         picker.delegate = context.coordinator
-        picker.sourceType = .camera
+        //        picker.sourceType = .camera
         picker.allowsEditing = true
         return picker
     }
@@ -117,8 +134,9 @@ extension CaptureImageView: UIViewControllerRepresentable {
     }
 }
 
-struct AddBagImage_Previews: PreviewProvider {
-    static var previews: some View {
-        AddBagImage()
-    }
-}
+//
+//struct AddBagImage_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AddBagImage()
+//    }
+//}

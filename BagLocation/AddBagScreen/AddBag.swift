@@ -35,10 +35,10 @@ struct AddBag: View {
                         .padding(.leading, -12.0)){
                             
                             HStack{
-                                if (image==nil){
-                                    Button(action: {
-                                        showingSheet.toggle()
-                                    }, label: {
+                                Button {
+                                    showingSheet.toggle()
+                                } label: {
+                                    if(bag.bagImage == nil) {
                                         ZStack{
                                             Rectangle()
                                                 .fill(Color("IjoTua"))
@@ -51,23 +51,20 @@ struct AddBag: View {
                                                 .foregroundColor(.white)
                                             
                                         }
-                                        
-                                    })
-                                    .fullScreenCover(isPresented: $showingSheet) {
-                                        AddBagImage()
-                                    }
-                                    
-                                }else{
-                                    ZStack {
-//                                        Image(uiImage: image ?? <#default value#>)
-////                                        image?
-//                                            .resizable()
-//                                            .clipped()
-//                                            .frame(width: 100, height: 100)
-//                                            .cornerRadius(5)
-//                                            .padding(.all, 0.0)
+                                    } else {
+                                        Image(uiImage: bag.bagImage!)
+                                            .resizable()
+                                            .clipped()
+                                            .frame(width: 100, height: 100)
+                                            .cornerRadius(5)
+                                            .padding(.all, 0.0)
                                     }
                                 }
+                                .fullScreenCover(isPresented: $showingSheet) {
+                                    AddBagImage(image: $bag.bagImage)
+                                }
+
+                                
                                 VStack(alignment: .leading){
                                     Text("Bag Name")
                                         .font(Font.system(.headline, design: .serif))
@@ -243,7 +240,7 @@ struct TemporaryItem: Equatable {
 struct TemporaryBag: Equatable {
     var bagID: UUID = UUID()
     var bagName: String
-    var bagImage: UIImage = UIImage(systemName: "camera")!
+    var bagImage: UIImage? = UIImage(systemName: "camera") ?? UIImage()
     
     var compartments: [TemporaryCompartment] = [TemporaryCompartment()]
 }
