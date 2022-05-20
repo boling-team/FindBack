@@ -1,9 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
-        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21E258" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="BagsEntity" representedClassName="BagsEntity" syncable="YES">
+        <attribute name="bagID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="bagImage" optional="YES" attributeType="Binary"/>
+        <attribute name="bagName" optional="YES" attributeType="String"/>
+        <relationship name="compartments" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CompartmentsEntity" inverseName="bag" inverseEntity="CompartmentsEntity"/>
+    </entity>
+    <entity name="CompartmentsEntity" representedClassName="CompartmentsEntity" syncable="YES">
+        <attribute name="compartmentID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="compartmentImage" optional="YES" attributeType="Binary"/>
+        <attribute name="compartmentName" optional="YES" attributeType="String"/>
+        <relationship name="bag" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BagsEntity" inverseName="compartments" inverseEntity="BagsEntity"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ItemsEntity" inverseName="compartment" inverseEntity="ItemsEntity"/>
+    </entity>
+    <entity name="ItemsEntity" representedClassName="ItemsEntity" syncable="YES">
+        <attribute name="itemID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="itemName" optional="YES" attributeType="String"/>
+        <relationship name="compartment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CompartmentsEntity" inverseName="items" inverseEntity="CompartmentsEntity"/>
     </entity>
     <elements>
-        <element name="Item" positionX="-63" positionY="-18" width="128" height="44"/>
+        <element name="BagsEntity" positionX="-63" positionY="-9" width="128" height="89"/>
+        <element name="CompartmentsEntity" positionX="-54" positionY="0" width="128" height="104"/>
+        <element name="ItemsEntity" positionX="-36" positionY="9" width="128" height="74"/>
     </elements>
 </model>

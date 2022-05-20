@@ -18,8 +18,7 @@ struct BagLocationApp: App {
                     .fullScreenCover(isPresented: $firstTimeUser) {
                         OnboardingMainScreen()
                     }
-    //            ContentView()
-    //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
             }
         }
     }
