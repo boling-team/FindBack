@@ -19,8 +19,6 @@ struct BagLocationApp: App {
                         OnboardingMainScreen()
                     }
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
-    //            ContentView()
-    //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
             }
         }
     }

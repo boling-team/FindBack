@@ -11,12 +11,12 @@
         <attribute name="compartmentImage" optional="YES" attributeType="Binary"/>
         <attribute name="compartmentName" optional="YES" attributeType="String"/>
         <relationship name="bag" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BagsEntity" inverseName="compartments" inverseEntity="BagsEntity"/>
-        <relationship name="items" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ItemsEntity"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ItemsEntity" inverseName="compartment" inverseEntity="ItemsEntity"/>
     </entity>
     <entity name="ItemsEntity" representedClassName="ItemsEntity" syncable="YES">
         <attribute name="itemID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="itemName" optional="YES" attributeType="String"/>
-        <relationship name="compartment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ItemsEntity" inverseName="compartment" inverseEntity="ItemsEntity"/>
+        <relationship name="compartment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CompartmentsEntity" inverseName="items" inverseEntity="CompartmentsEntity"/>
     </entity>
     <elements>
         <element name="BagsEntity" positionX="-63" positionY="-9" width="128" height="89"/>

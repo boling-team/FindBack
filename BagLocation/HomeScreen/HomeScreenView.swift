@@ -33,11 +33,11 @@ struct HomeScreenView: View {
                 ForEach(bags, id: \.wrappedBagID) {
                     bag in
                     Section {
-                        CardView()
+                        CardView(bag: bag)
                     }
                     .listRowBackground(Color("IjoMuda"))
                 }
-//                .onDelete(perform: deleteBag)
+                .onDelete(perform: deleteBag)
           }
             .listStyle(.insetGrouped)
             .searchable(text: $searchText, prompt: "Search item") {
@@ -81,8 +81,19 @@ struct HomeScreenView: View {
         
     }
     
-    func deleteBag() {
-        
+    private func deleteBag(offsets: IndexSet) {
+        withAnimation {
+            offsets.map { bags[$0] }.forEach(viewContext.delete)
+            
+            do {
+                try viewContext.save()
+            } catch {
+                // Replace this implementation with code to handle the error appropriately.
+                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            }
+        }
     }
 }
 
