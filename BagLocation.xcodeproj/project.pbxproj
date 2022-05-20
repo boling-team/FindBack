@@ -10,6 +10,12 @@
 		7CADD9F4282BF5B500A98290 /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CADD9F3282BF5B500A98290 /* HomeScreenView.swift */; };
 		7CADD9F8282BF5D700A98290 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CADD9F7282BF5D700A98290 /* CardView.swift */; };
 		7CADD9FB282BF6AA00A98290 /* ClearTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CADD9FA282BF6AA00A98290 /* ClearTextField.swift */; };
+		7CD1F0D22837430900F7722E /* CompartmentsEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1F0CC2837430900F7722E /* CompartmentsEntity+CoreDataClass.swift */; };
+		7CD1F0D32837430900F7722E /* CompartmentsEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1F0CD2837430900F7722E /* CompartmentsEntity+CoreDataProperties.swift */; };
+		7CD1F0D42837430900F7722E /* ItemsEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1F0CE2837430900F7722E /* ItemsEntity+CoreDataClass.swift */; };
+		7CD1F0D52837430900F7722E /* ItemsEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1F0CF2837430900F7722E /* ItemsEntity+CoreDataProperties.swift */; };
+		7CD1F0D62837430900F7722E /* BagsEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1F0D02837430900F7722E /* BagsEntity+CoreDataClass.swift */; };
+		7CD1F0D72837430900F7722E /* BagsEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1F0D12837430900F7722E /* BagsEntity+CoreDataProperties.swift */; };
 		CB3403AD2834A1B70045AB62 /* OnboardingMainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3403AC2834A1B70045AB62 /* OnboardingMainScreen.swift */; };
 		CB3403AF2834AA850045AB62 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3403AE2834AA850045AB62 /* Model.swift */; };
 		CB3403B12834AB220045AB62 /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3403B02834AB220045AB62 /* Views.swift */; };
@@ -39,6 +45,12 @@
 		7CADD9F3282BF5B500A98290 /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
 		7CADD9F7282BF5D700A98290 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		7CADD9FA282BF6AA00A98290 /* ClearTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearTextField.swift; sourceTree = "<group>"; };
+		7CD1F0CC2837430900F7722E /* CompartmentsEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CompartmentsEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7CD1F0CD2837430900F7722E /* CompartmentsEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CompartmentsEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7CD1F0CE2837430900F7722E /* ItemsEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemsEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7CD1F0CF2837430900F7722E /* ItemsEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemsEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7CD1F0D02837430900F7722E /* BagsEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BagsEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7CD1F0D12837430900F7722E /* BagsEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BagsEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CB3403AC2834A1B70045AB62 /* OnboardingMainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingMainScreen.swift; sourceTree = "<group>"; };
 		CB3403AE2834AA850045AB62 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		CB3403B02834AB220045AB62 /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
@@ -102,6 +114,19 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		7CD1F0D82837430D00F7722E /* CoreDataModel */ = {
+			isa = PBXGroup;
+			children = (
+				7CD1F0CC2837430900F7722E /* CompartmentsEntity+CoreDataClass.swift */,
+				7CD1F0CD2837430900F7722E /* CompartmentsEntity+CoreDataProperties.swift */,
+				7CD1F0CE2837430900F7722E /* ItemsEntity+CoreDataClass.swift */,
+				7CD1F0CF2837430900F7722E /* ItemsEntity+CoreDataProperties.swift */,
+				7CD1F0D02837430900F7722E /* BagsEntity+CoreDataClass.swift */,
+				7CD1F0D12837430900F7722E /* BagsEntity+CoreDataProperties.swift */,
+			);
+			path = CoreDataModel;
+			sourceTree = "<group>";
+		};
 		CB3403AB2834A10A0045AB62 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +140,7 @@
 		CB8250CF282BF2C9001ED786 = {
 			isa = PBXGroup;
 			children = (
+				7CD1F0D82837430D00F7722E /* CoreDataModel */,
 				CB8250DA282BF2C9001ED786 /* BagLocation */,
 				CB8250D9282BF2C9001ED786 /* Products */,
 			);
@@ -279,10 +305,14 @@
 				DC215E5F28334D5200A71627 /* AddPocket.swift in Sources */,
 				CB8250DE282BF2C9001ED786 /* ContentView.swift in Sources */,
 				7CADD9FB282BF6AA00A98290 /* ClearTextField.swift in Sources */,
+				7CD1F0D72837430900F7722E /* BagsEntity+CoreDataProperties.swift in Sources */,
 				7CADD9F4282BF5B500A98290 /* HomeScreenView.swift in Sources */,
 				DC411633282D4A400055B9F7 /* Coordinator.swift in Sources */,
+				7CD1F0D42837430900F7722E /* ItemsEntity+CoreDataClass.swift in Sources */,
+				7CD1F0D22837430900F7722E /* CompartmentsEntity+CoreDataClass.swift in Sources */,
 				CBD1E8BE2836C7650002C461 /* BagCompartmentPage.swift in Sources */,
 				CB8250DC282BF2C9001ED786 /* BagLocationApp.swift in Sources */,
+				7CD1F0D32837430900F7722E /* CompartmentsEntity+CoreDataProperties.swift in Sources */,
 				CB3403AD2834A1B70045AB62 /* OnboardingMainScreen.swift in Sources */,
 				7CADD9F8282BF5D700A98290 /* CardView.swift in Sources */,
 				CBD1E8CA2836C7770002C461 /* ItemSearchView.swift in Sources */,
@@ -290,11 +320,13 @@
 				CB3403B12834AB220045AB62 /* Views.swift in Sources */,
 				CB8250E8282BF2CB001ED786 /* BagLocation.xcdatamodeld in Sources */,
 				DCCD3A5028352D590068C610 /* AddBagImage.swift in Sources */,
+				7CD1F0D62837430900F7722E /* BagsEntity+CoreDataClass.swift in Sources */,
 				CBD1E8C02836C7650002C461 /* BagCompartmentSheet.swift in Sources */,
 				DC7E0C30282BFA2600FDF70C /* AddBag.swift in Sources */,
 				CBD1E8C82836C7770002C461 /* SearchResultItem.swift in Sources */,
 				CBD1E8C92836C7770002C461 /* SearchBarView.swift in Sources */,
 				CBD1E8BF2836C7650002C461 /* BagAddCompartment.swift in Sources */,
+				7CD1F0D52837430900F7722E /* ItemsEntity+CoreDataProperties.swift in Sources */,
 				CBD1E8C12836C7650002C461 /* list.swift in Sources */,
 				CBD1E8C22836C7650002C461 /* component.swift in Sources */,
 			);
@@ -426,7 +458,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BagLocation/Preview Content\"";
-				DEVELOPMENT_TEAM = 6HJGRNJXXR;
+				DEVELOPMENT_TEAM = 9X8MNF3J54;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BagLocation/Info.plist;
@@ -459,7 +491,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BagLocation/Preview Content\"";
-				DEVELOPMENT_TEAM = 6HJGRNJXXR;
+				DEVELOPMENT_TEAM = 9X8MNF3J54;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BagLocation/Info.plist;
