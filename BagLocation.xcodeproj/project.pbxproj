@@ -33,6 +33,7 @@
 		DC411633282D4A400055B9F7 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC411632282D4A400055B9F7 /* Coordinator.swift */; };
 		DC7E0C30282BFA2600FDF70C /* AddBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7E0C2F282BFA2600FDF70C /* AddBag.swift */; };
 		DCCD3A5028352D590068C610 /* AddBagImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCD3A4F28352D590068C610 /* AddBagImage.swift */; };
+		DCDE40E428373F4000AEF03E /* BagScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDE40E328373F4000AEF03E /* BagScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +64,7 @@
 		DC7E0C2F282BFA2600FDF70C /* AddBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBag.swift; sourceTree = "<group>"; };
 		DC7E0C31282C2EB600FDF70C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DCCD3A4F28352D590068C610 /* AddBagImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBagImage.swift; sourceTree = "<group>"; };
+		DCDE40E328373F4000AEF03E /* BagScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 		CB8250DA282BF2C9001ED786 /* BagLocation */ = {
 			isa = PBXGroup;
 			children = (
+				DCDE40E52837415C00AEF03E /* BagScreen */,
 				CBD1E8C42836C7770002C461 /* ItemSearch */,
 				CBD1E8B62836C7650002C461 /* BagCompartment */,
 				CB3403AB2834A10A0045AB62 /* Onboarding */,
@@ -196,6 +199,14 @@
 				DCCD3A4F28352D590068C610 /* AddBagImage.swift */,
 			);
 			path = AddBagScreen;
+			sourceTree = "<group>";
+		};
+		DCDE40E52837415C00AEF03E /* BagScreen */ = {
+			isa = PBXGroup;
+			children = (
+				DCDE40E328373F4000AEF03E /* BagScreen.swift */,
+			);
+			path = BagScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,6 +297,7 @@
 				CB3403AD2834A1B70045AB62 /* OnboardingMainScreen.swift in Sources */,
 				7CADD9F8282BF5D700A98290 /* CardView.swift in Sources */,
 				CBD1E8CA2836C7770002C461 /* ItemSearchView.swift in Sources */,
+				DCDE40E428373F4000AEF03E /* BagScreen.swift in Sources */,
 				CBD1E8C32836C7650002C461 /* BagCompartment.swift in Sources */,
 				CB3403B12834AB220045AB62 /* Views.swift in Sources */,
 				CB8250E8282BF2CB001ED786 /* BagLocation.xcdatamodeld in Sources */,
