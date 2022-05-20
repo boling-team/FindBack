@@ -63,7 +63,7 @@ struct AddBag: View {
                                             }
                                             
                                         })
-                                        .sheet(isPresented: $showingSheet) {
+                                        .fullScreenCover(isPresented: $showingSheet) {
                                             AddBagImage()
                                         }
                                         
