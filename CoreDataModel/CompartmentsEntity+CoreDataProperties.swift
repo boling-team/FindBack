@@ -21,6 +21,15 @@ extension CompartmentsEntity {
     @NSManaged public var compartmentName: String?
     @NSManaged public var bag: BagsEntity?
     @NSManaged public var items: NSSet?
+    
+    public var itemList: [ItemsEntity] {
+        get {
+            let setOfItems = items as? Set<ItemsEntity> ?? []
+            return setOfItems.sorted{
+                $0.itemName! < $1.itemName!
+            }
+        }
+    }
 
 }
 

@@ -10,7 +10,6 @@ import SwiftUI
 struct HomeScreenView: View {
     // MARK: ENVIRONMENT
     @Environment(\.managedObjectContext) private var viewContext
-    @Environment(\.isSearching) private var isSearching
     
     // MARK: FETCH REQUEST
     @FetchRequest(
@@ -29,22 +28,29 @@ struct HomeScreenView: View {
     
     var body: some View {
         NavigationView {
-            List{
-                ForEach(bags, id: \.wrappedBagID) {
-                    bag in
-                    Section {
-                        CardView(bag: bag)
-                    }
-                    .listRowBackground(Color("IjoMuda"))
+//            List{
+//                ForEach(bags, id: \.wrappedBagID) {
+//                    bag in
+//                    Section {
+//                        CardView(bag: bag)
+//                    }
+//                    .listRowBackground(Color("IjoMuda"))
+//                }
+//                .onDelete(perform: deleteBag)
+//          }
+//            .listStyle(.insetGrouped)
+//            .searchable(text: $searchText, prompt: "Search item") {
+//                //TODO: LOOP ITEM LIST WITH LOCATION INFORMATION PSEUDOCODE
+//                // FOREACH ITEM IN ITEM_LIST
+//                //      SHOW CARDVIEW CONTAINING THE INFORMATION
+//            }
+            HomeScreenList(bags: bags)
+                .listStyle(.insetGrouped)
+                .searchable(text: $searchText, prompt: "Search item") {
+                    //TODO: LOOP ITEM LIST WITH LOCATION INFORMATION PSEUDOCODE
+                    // FOREACH ITEM IN ITEM_LIST
+                    //      SHOW CARDVIEW CONTAINING THE INFORMATION
                 }
-                .onDelete(perform: deleteBag)
-          }
-            .listStyle(.insetGrouped)
-            .searchable(text: $searchText, prompt: "Search item") {
-                //TODO: LOOP ITEM LIST WITH LOCATION INFORMATION PSEUDOCODE
-                // FOREACH ITEM IN ITEM_LIST
-                //      SHOW CARDVIEW CONTAINING THE INFORMATION
-            }
             .overlay {
                 if (bags.count == 0) {
                     VStack(spacing: 20) {
@@ -80,6 +86,69 @@ struct HomeScreenView: View {
         }
         
     }
+}
+
+struct HomeScreenList: View {
+    // MARK: SEARCH
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    @Environment(\.isSearching) private var isSearching
+    
+    // MARK: STATE
+    @State var searchText: String = ""
+    @State var searchResult: [SearchResult] = []
+    
+    var bags: FetchedResults<BagsEntity>
+//
+//    init(bags: FetchedResults<BagsEntity>) {
+//        self.bags = bags
+//    }
+    
+    var body: some View {
+        List{
+            if(isSearching) {
+//                ForEach(bags, id: \.wrappedBagID) {
+//                    bag in
+//                    Section {
+//                        CardView(bag: bag)
+//                    }
+//                    .listRowBackground(Color("IjoMuda"))
+//                }
+//                .onDelete(perform: deleteBag)
+                Text("Lagi Cari Mas")
+            } else {
+                ForEach(bags, id: \.wrappedBagID) {
+                    bag in
+                    Section {
+                        CardView(bag: bag)
+                    }
+                    .listRowBackground(Color("IjoMuda"))
+                }
+                .onDelete(perform: deleteBag)
+            }
+      }
+        .onChange(of: searchText, perform: { _ in
+            //TODO: FILTERING THE ITEM LIST BASED ON THE SEARCH BAR INPUT (searchText)
+            
+            // MARK: JANGAN LUPA
+            // Bag <--->> Compartment <--->> Item
+            var results: [SearchResult] = []
+            
+            for bag in bags {
+                for compartment in bag.compartmentList {
+                    // if array.contains(where: {$0.name == "foo"})
+                    for item in compartment.itemList {
+                        if(item.itemName!.localizedCaseInsensitiveContains(searchText)) {
+                            results.append(SearchResult(bag: bag, compartment: compartment, item: item))
+                        }
+                    }
+                }
+            }
+            
+            print(results)
+            searchResult = results
+        })
+    }
     
     private func deleteBag(offsets: IndexSet) {
         withAnimation {
@@ -101,4 +170,10 @@ struct HomeScreenView_Previews: PreviewProvider {
     static var previews: some View {
         HomeScreenView()
     }
+}
+
+struct SearchResult {
+    var bag: BagsEntity
+    var compartment: CompartmentsEntity
+    var item: ItemsEntity
 }

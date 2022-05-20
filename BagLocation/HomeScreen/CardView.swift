@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct CardView: View {
     var bag: BagsEntity
@@ -15,7 +16,7 @@ struct CardView: View {
             
         } label: {
             HStack {
-                Image("EmptyBag")
+                Image(uiImage: (UIImage(data: bag.wrappedBagImage) ?? UIImage(systemName: "plus")!))
                     .resizable()
                     .frame(width: 40, height: 40)
                     .clipped()
@@ -39,12 +40,3 @@ struct CardView: View {
 
     }
 }
-
-//struct CardView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NavigationView {
-//            CardView()
-//        }
-////            .preferredColorScheme(.dark)
-//    }
-//}

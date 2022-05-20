@@ -29,6 +29,10 @@ extension BagsEntity {
         bagID ?? UUID()
     }
     
+    public var wrappedBagImage: Data {
+        bagImage ?? Data()
+    }
+    
     public var compartmentList: [CompartmentsEntity] {
         let setOfCompartment = compartments as? Set<CompartmentsEntity> ?? []
         
