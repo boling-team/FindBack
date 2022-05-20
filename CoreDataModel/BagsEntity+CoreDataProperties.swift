@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 
 extension BagsEntity {
@@ -29,8 +30,8 @@ extension BagsEntity {
         bagID ?? UUID()
     }
     
-    public var wrappedBagImage: Data {
-        bagImage ?? Data()
+    public var wrappedBagImage: UIImage {
+        UIImage(data: bagImage!) ?? UIImage(systemName: "plus")!
     }
     
     public var compartmentList: [CompartmentsEntity] {

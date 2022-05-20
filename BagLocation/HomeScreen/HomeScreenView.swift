@@ -28,22 +28,6 @@ struct HomeScreenView: View {
     
     var body: some View {
         NavigationView {
-//            List{
-//                ForEach(bags, id: \.wrappedBagID) {
-//                    bag in
-//                    Section {
-//                        CardView(bag: bag)
-//                    }
-//                    .listRowBackground(Color("IjoMuda"))
-//                }
-//                .onDelete(perform: deleteBag)
-//          }
-//            .listStyle(.insetGrouped)
-//            .searchable(text: $searchText, prompt: "Search item") {
-//                //TODO: LOOP ITEM LIST WITH LOCATION INFORMATION PSEUDOCODE
-//                // FOREACH ITEM IN ITEM_LIST
-//                //      SHOW CARDVIEW CONTAINING THE INFORMATION
-//            }
             HomeScreenList(bags: bags)
                 .listStyle(.insetGrouped)
                 .searchable(text: $searchText, prompt: "Search item") {
@@ -83,6 +67,7 @@ struct HomeScreenView: View {
                 }
             }
             .navigationTitle("Bag List")
+
         }
         
     }
@@ -99,14 +84,11 @@ struct HomeScreenList: View {
     @State var searchResult: [SearchResult] = []
     
     var bags: FetchedResults<BagsEntity>
-//
-//    init(bags: FetchedResults<BagsEntity>) {
-//        self.bags = bags
-//    }
     
     var body: some View {
         List{
             if(isSearching) {
+                // MARK: FITUR SEARCHING
 //                ForEach(bags, id: \.wrappedBagID) {
 //                    bag in
 //                    Section {
@@ -119,12 +101,19 @@ struct HomeScreenList: View {
             } else {
                 ForEach(bags, id: \.wrappedBagID) {
                     bag in
-                    Section {
                         CardView(bag: bag)
-                    }
                     .listRowBackground(Color("IjoMuda"))
                 }
                 .onDelete(perform: deleteBag)
+            }
+            
+            Section {
+                // MARK: JANGAN LUPA HAPUS
+                Button("PRINT OUT DB LOCATION") {
+                    // DB LOCATION
+                    let paths = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
+                    print(paths[0])
+                }
             }
       }
         .onChange(of: searchText, perform: { _ in

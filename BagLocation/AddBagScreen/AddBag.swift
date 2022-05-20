@@ -71,6 +71,7 @@ struct AddBag: View {
                                         .foregroundColor(.black)
                                     TextField("E. g. Green Bag", text: $bag.bagName)
                                         .foregroundColor(.black)
+                                        .modifier(TextClearField(text: $bag.bagName))
                                 }.textFieldStyle(RoundedBorderTextFieldStyle())
                                     .padding(.leading, 5.0)
                             }
@@ -79,7 +80,7 @@ struct AddBag: View {
                         .listRowBackground(Color("IjoMuda"))
                         .textCase(nil)
                     
-                   Section(header:  Text("Compartment List")
+                   Section(header: Text("Compartment List")
                     .font(Font.system(.title2, design: .serif))
                     .foregroundColor(.black)
                     .bold()
@@ -107,8 +108,6 @@ struct AddBag: View {
                     }){
                         Text("Cancel")
                             .foregroundColor(Color("IjoTua"))
-                            .bold()
-                        
                     }
                 }
                 
@@ -130,7 +129,7 @@ struct AddBag: View {
                             newCompartment.bag = newBag
                             // TODO: UBAH FOTO JADI BINARY
                             newCompartment.compartmentImage = compartment.compartmentImage?.jpegData(compressionQuality: 1.0)
-                            
+
                             for item in compartment.items {
                                 let newItem = ItemsEntity(context: viewContext)
                                 newItem.itemName = item.itemName
@@ -150,7 +149,6 @@ struct AddBag: View {
                     }){
                         Text("Save")
                             .foregroundColor(Color("IjoTua"))
-                            .bold()
                     }
                 }
                 
@@ -186,7 +184,6 @@ struct AddBag_Previews: PreviewProvider {
         AddBag()
     }
 }
-
 
 struct TemporaryCompartment: Equatable {
     var compartmentID: UUID = UUID()

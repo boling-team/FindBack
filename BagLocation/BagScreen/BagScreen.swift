@@ -8,33 +8,42 @@
 import SwiftUI
 
 struct BagScreen: View {
+    // MARK: ENVIRONMENT
     @Environment(\.dismiss) var dismiss
+    @Environment(\.editMode) private var editMode
+    @Environment(\.managedObjectContext) private var viewContext
     
+    // MARK: STATE
     @State var image: UIImage? = nil
     @State var showCaptureImageView: Bool = false
     @State private var showingSheet = false
+    
+    // MARK: OBSERVED OBJECT
+    @ObservedObject var bag: BagsEntity
 
-    init() {
+    init(bag: BagsEntity) {
         UITableView.appearance().sectionHeaderHeight = 3
         UITableView.appearance().sectionFooterHeight = 3
+        
+        self._bag = ObservedObject(initialValue: bag)
     }
     
     var body: some View {
-        NavigationView{
+//        NavigationView{
             VStack {
                 List{
-                    Section(header:  Text("Bag Detail")
+                    Section(header: Text("Bag Detail")
                         .font(Font.system(.title2, design: .serif))
                         .foregroundColor(.black)
                         .bold()
                         .padding(.leading, -12.0)){
                             
                             HStack{
-                                if (image==nil){
-                                    Button(action: {
-                                        showingSheet.toggle()
-                                    }, label: {
-                                        ZStack{
+                                Button {
+                                    showingSheet.toggle()
+                                } label: {
+                                    ZStack {
+                                    if(bag.bagImage == nil) {
                                             Rectangle()
                                                 .fill(Color("IjoTua"))
                                                 .cornerRadius(5)
@@ -44,31 +53,32 @@ struct BagScreen: View {
                                                 .renderingMode(.original)
                                                 .font(Font.custom("Serif",size: 30))
                                                 .foregroundColor(.white)
-                                            
-                                        }
-                                        
-                                    })
-//                                    .fullScreenCover(isPresented: $showingSheet) {
-//                                        AddBagImage()
-//                                    }
-                                    
-                                }else{
-                                    ZStack {
-//                                        image?
-                                        Image(uiImage: (image ?? UIImage(systemName: "plus"))!)
+                                    }
+                                    else {
+                                        Image(uiImage: UIImage(data: bag.bagImage!)!)
                                             .resizable()
                                             .clipped()
                                             .frame(width: 100, height: 100)
                                             .cornerRadius(5)
                                             .padding(.all, 0.0)
                                     }
+                                    }
                                 }
+                                .fullScreenCover(isPresented: $showingSheet) {
+                                    AddBagImageCoreData(image: bag.wrappedBagImage, bag: bag)
+                                }
+                                
                                 VStack(alignment: .leading){
-//                                    Text("Bag Name")
-//                                        .font(Font.system(.headline, design: .serif))
-//                                        .foregroundColor(.black)
-//                                    TextField("E. g. Green Bag", text: $bag.bagName)
-//                                        .foregroundColor(.black)
+                                    Text("Bag Name")
+                                        .font(Font.system(.headline, design: .serif))
+                                        .foregroundColor(.black)
+                                    BagNameTextField(bag: bag)
+                                    
+//                                        .modifier(TextClearField(text: $bag.bagName))
+                                    
+                                        .foregroundColor(.black)
+                                        .disabled(!editMode!.wrappedValue.isEditing)
+                                      
                                 }.textFieldStyle(RoundedBorderTextFieldStyle())
                                     .padding(.leading, 5.0)
                             }
@@ -84,34 +94,119 @@ struct BagScreen: View {
                         .padding(.leading, -12.0)){
                         }
                         .padding(.top, 5.0)
+                        .textCase(nil)
                     
                     
                     //                        ForEach((1...9).reversed(), id: \.self) { i in
                     //                            CompartmentView()
                     //                        }.listRowBackground(Color("IjoMuda"))
+                    
+                    ForEach(bag.compartmentList, id:\.compartmentID) {
+                        compartment in
+
+                        NavigationLink {
+//                           ItemDetailView(compartment: compartment)
+                        } label: {
+                            VStack(alignment: .leading) {
+                                CompartmentNameTextField(compartment: compartment)
+                                    .disabled(!editMode!.wrappedValue.isEditing)
+                            }
+                        }
+                    }
+                    .onDelete(perform: deleteBag)
+                    
                 }.listStyle(.insetGrouped)
             }
             .navigationTitle("Bag")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action:{
-                        print("Button Cancel Pressed")
-                        dismiss()
-                    }){
-                        //                            Image(systemName: "chevron.backward")
-                        //                                .foregroundColor(Color("IjoTua"))
-                        //                                .renderingMode(.original)
-                        //                                .font(.system(size: 20))
-                        Text("Back")
-                            .foregroundColor(Color("IjoTua"))
-                            .bold()
-                        
-                    }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    EditButton()
                 }
+//                ToolbarItem(placement: .navigationBarLeading) {
+//                    Button {
+//                        print("Button Cancel Pressed")
+//                        dismiss()
+//                    } label: {
+//                        HStack {
+//                            Image(systemName: "chevron.backward")
+//                                .foregroundColor(Color("IjoTua"))
+////                                .renderingMode(.original)
+////                                .font(.system(size: 20))
+//                            Text("Back")
+//                                .foregroundColor(Color("IjoTua"))
+//                                .bold()
+//                        }
+//                    }
+//                }
+
+//            }
+        }
+    }
+    
+    private func deleteBag(offsets: IndexSet) {
+        withAnimation {
+            // LOOP THROUGH OFFSETS AND DELETE THOSE INDEXES
+            offsets.map { bag.compartmentList[$0] }.forEach(viewContext.delete)
+            
+            do {
+                try viewContext.save()
+            } catch {
+                // AUTO GENERATED CODE BY CORE DATA
                 
+                // Replace this implementation with code to handle the error appropriately.
+                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
         }
+    }
+}
+
+struct BagNameTextField: View {
+    @ObservedObject var bag: BagsEntity
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    @FocusState var isTextFieldFocused: Bool
+    
+    init(bag: BagsEntity) {
+        self._bag = ObservedObject(initialValue: bag)
+    }
+    
+    var body: some View {
+        TextField("E.g. Green Bag", text: $bag.bagName)
+//            .modifier(TextClearField(text: $compartment.compartmentName))
+            .modifier(TextClearField(text: $bag.bagName.toUnwrapped(defaultValue: "")))
+            .focused($isTextFieldFocused)
+            .onChange(of: isTextFieldFocused) { isFocused in
+                if !isFocused {
+                    try! viewContext.save()
+                }
+            }
+    }
+}
+
+struct CompartmentNameTextField: View {
+    @ObservedObject var compartment: CompartmentsEntity
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    @FocusState var isTextFieldFocused: Bool
+    
+    init(compartment: CompartmentsEntity) {
+        self._compartment = ObservedObject(initialValue: compartment)
+    }
+    
+    var body: some View {
+        TextField("E.g. Side pocket", text: $compartment.compartmentName)
+            .modifier(TextClearField(text: $compartment.compartmentName.toUnwrapped(defaultValue: "")))
+            .focused($isTextFieldFocused)
+            .onChange(of: isTextFieldFocused) { isFocused in
+                if !isFocused {
+                    print("Before Save", compartment.compartmentName!)
+                    try! viewContext.save()
+                    print("After Save", compartment.compartmentName!)
+                }
+            }
     }
 }
 
@@ -122,3 +217,9 @@ struct BagScreen: View {
 //        BagScreen()
 //    }
 //}
+
+extension Binding {
+     func toUnwrapped<T>(defaultValue: T) -> Binding<T> where Value == Optional<T>  {
+        Binding<T>(get: { self.wrappedValue ?? defaultValue }, set: { self.wrappedValue = $0 })
+    }
+}

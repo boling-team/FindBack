@@ -9,18 +9,21 @@ import SwiftUI
 import UIKit
 
 struct CardView: View {
+//    @State var bagDetailSheet: Bool = false
+    
     var bag: BagsEntity
     
     var body: some View {
         NavigationLink {
-            
+            BagScreen(bag: bag)
         } label: {
             HStack {
-                Image(uiImage: (UIImage(data: bag.wrappedBagImage) ?? UIImage(systemName: "plus")!))
+                Image(uiImage: bag.wrappedBagImage)
                     .resizable()
-                    .frame(width: 40, height: 40)
+                    .frame(width: 50, height: 50)
                     .clipped()
-                    .padding(10)
+//                    .padding(10)
+                    .cornerRadius(8)
                     .border(.gray, width: 1)
                 
                 VStack(alignment: .leading, spacing: 4) {

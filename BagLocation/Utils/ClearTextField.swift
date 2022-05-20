@@ -10,6 +10,7 @@ import SwiftUI
 struct TextClearField: ViewModifier
 {
     @Binding var text: String
+    @Environment(\.editMode) var isEdit
     
     public func body(content: Content) -> some View
     {
@@ -17,6 +18,7 @@ struct TextClearField: ViewModifier
         {
             content
             Spacer()
+            // isEdit?.wrappedValue == .active
             if !text.isEmpty
             {
                 Button(action:
