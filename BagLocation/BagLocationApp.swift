@@ -10,7 +10,8 @@ import SwiftUI
 @main
 struct BagLocationApp: App {
     let persistenceController = PersistenceController.shared
-    @AppStorage("FirstTimeUser") var firstTimeUser: Bool = true
+//    @AppStorage("FirstTimeUser") var firstTimeUser: Bool = true
+    @State var firstTimeUser: Bool = true
     
     var body: some Scene {
             WindowGroup {

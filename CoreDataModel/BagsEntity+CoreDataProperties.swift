@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 
 extension BagsEntity {
@@ -29,15 +30,15 @@ extension BagsEntity {
         bagID ?? UUID()
     }
     
-    public var wrappedBagImage: Data {
-        bagImage ?? Data()
+    public var wrappedBagImage: UIImage {
+        UIImage(data: bagImage!) ?? UIImage(systemName: "plus")!
     }
     
     public var compartmentList: [CompartmentsEntity] {
         let setOfCompartment = compartments as? Set<CompartmentsEntity> ?? []
         
         return setOfCompartment.sorted{
-            $0.compartmentName! < $1.compartmentName!
+            $0.compartmentName ?? "Unknown" < $1.compartmentName ?? "Unknown"
         }
     }
 }

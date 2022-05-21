@@ -35,9 +35,9 @@ struct AddBag: View {
                         .padding(.leading, -12.0)){
                             
                             HStack{
-                                Button {
-                                    showingSheet.toggle()
-                                } label: {
+//                                Button {
+//                                    showingSheet.toggle()
+//                                } label: {
                                     if(bag.bagImage == nil) {
                                         ZStack{
                                             Rectangle()
@@ -49,7 +49,9 @@ struct AddBag: View {
                                                 .renderingMode(.original)
                                                 .font(Font.custom("Serif",size: 30))
                                                 .foregroundColor(.white)
-                                            
+                                        }
+                                        .onTapGesture {
+                                            showingSheet.toggle()
                                         }
                                     } else {
                                         Image(uiImage: bag.bagImage!)
@@ -58,12 +60,11 @@ struct AddBag: View {
                                             .frame(width: 100, height: 100)
                                             .cornerRadius(5)
                                             .padding(.all, 0.0)
+                                            .onTapGesture {
+                                                showingSheet.toggle()
+                                            }
                                     }
-                                }
-                                .fullScreenCover(isPresented: $showingSheet) {
-                                    AddBagImage(image: $bag.bagImage)
-                                }
-
+//                                }
                                 
                                 VStack(alignment: .leading){
                                     Text("Bag Name")
@@ -71,22 +72,26 @@ struct AddBag: View {
                                         .foregroundColor(.black)
                                     TextField("E. g. Green Bag", text: $bag.bagName)
                                         .foregroundColor(.black)
+//                                        .modifier(TextClearField(text: $bag.bagName))
                                 }.textFieldStyle(RoundedBorderTextFieldStyle())
                                     .padding(.leading, 5.0)
                             }
                             .listRowInsets(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
+                            .fullScreenCover(isPresented: $showingSheet) {
+                                AddBagImage(image: $bag.bagImage)
+                            }
                         }
                         .listRowBackground(Color("IjoMuda"))
                         .textCase(nil)
                     
-                   Section(header:  Text("Compartment List")
-                    .font(Font.system(.title2, design: .serif))
-                    .foregroundColor(.black)
-                    .bold()
-                    .padding(.leading, -12.0)) {
-                        
-                    }
-                    .textCase(nil)
+                    Section(header: Text("Compartment List")
+                        .font(Font.system(.title2, design: .serif))
+                        .foregroundColor(.black)
+                        .bold()
+                        .padding(.leading, -12.0)) {
+
+                        }
+                        .textCase(nil)
                     
                     ForEach($bag.compartments, id: \.compartmentID) {
                         $compartment in
@@ -107,8 +112,6 @@ struct AddBag: View {
                     }){
                         Text("Cancel")
                             .foregroundColor(Color("IjoTua"))
-                            .bold()
-                        
                     }
                 }
                 
@@ -130,7 +133,7 @@ struct AddBag: View {
                             newCompartment.bag = newBag
                             // TODO: UBAH FOTO JADI BINARY
                             newCompartment.compartmentImage = compartment.compartmentImage?.jpegData(compressionQuality: 1.0)
-                            
+
                             for item in compartment.items {
                                 let newItem = ItemsEntity(context: viewContext)
                                 newItem.itemName = item.itemName
@@ -150,12 +153,10 @@ struct AddBag: View {
                     }){
                         Text("Save")
                             .foregroundColor(Color("IjoTua"))
-                            .bold()
                     }
                 }
                 
                 ToolbarItemGroup(placement: .bottomBar) {
-                    
                     HStack {
                         Button(action : {
                             print("Pressed")
@@ -186,7 +187,6 @@ struct AddBag_Previews: PreviewProvider {
         AddBag()
     }
 }
-
 
 struct TemporaryCompartment: Equatable {
     var compartmentID: UUID = UUID()

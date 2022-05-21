@@ -18,7 +18,7 @@ struct OnboarModel: Hashable {
         
         data.append(
             OnboarModel(
-                title: "Hello Campers! 1",
+                title: "Hello Campers!",
                 description: "Welcome to Backpack, Let’s organize your camping logistics in your bag.",
                 image: "Screen1",
                 page: 0
@@ -27,8 +27,8 @@ struct OnboarModel: Hashable {
         
         data.append(
             OnboarModel(
-                title: "Hello Campers! 2",
-                description: "Welcome to Backpack, Let’s organize your camping logistics in your bag.",
+                title: "Logistic Planning",
+                description: "Backpack can helps you to plan your logistics for your camping needs!",
                 image: "Screen2",
                 page: 1
             )
@@ -36,8 +36,8 @@ struct OnboarModel: Hashable {
         
         data.append(
             OnboarModel(
-                title: "Hello Campers! 3",
-                description: "Welcome to Backpack, Let’s organize your camping logistics in your bag.",
+                title: "Item Search",
+                description: "You can find the items in your bag quickly whenever you need them.",
                 image: "Screen3",
                 page: 2
             )
@@ -45,8 +45,8 @@ struct OnboarModel: Hashable {
         
         data.append(
             OnboarModel(
-                title: "Hello Campers! 4",
-                description: "Welcome to Backpack, Let’s organize your camping logistics in your bag.",
+                title: "How do we do it?",
+                description: "You can make a list of bags, take pictures, and determine items’ placement. You can find items in your bag quickly with the search feature.",
                 image: "Screen4",
                 page: 3
             )
@@ -54,8 +54,8 @@ struct OnboarModel: Hashable {
         
         data.append(
             OnboarModel(
-                title: "Hello Campers! 5",
-                description: "Welcome to Backpack, Let’s organize your camping logistics in your bag.",
+                title: "Fun Camping",
+                description: "Let's make camping a fun experience!",
                 image: "Screen5",
                 page: 4
             )

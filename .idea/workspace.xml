@@ -5,16 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c2642883-6f34-41e9-ad9b-4a94bde7893a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/BagLocation/AddBagScreen/views/view.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_12_05_22_21_07__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BagLocation/AddBagScreen/AddBagImageCoreData.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BagLocation.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/BagLocation.xcodeproj/project.pbxproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BagLocation.xcodeproj/project.xcworkspace/xcuserdata/agusbudianto.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/BagLocation.xcodeproj/project.xcworkspace/xcuserdata/agusbudianto.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BagLocation/BagCompartment/BagCompartment.swift" beforeDir="false" afterPath="$PROJECT_DIR$/BagLocation/BagCompartment/BagCompartment.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BagLocation/BagCompartment/BagCompartmentPage.swift" beforeDir="false" afterPath="$PROJECT_DIR$/BagLocation/BagCompartment/BagCompartmentPage.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BagLocation/BagCompartment/BagCompartmentSheet.swift" beforeDir="false" afterPath="$PROJECT_DIR$/BagLocation/BagCompartment/BagCompartmentSheet.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BagLocation/BagCompartment/views/component.swift" beforeDir="false" afterPath="$PROJECT_DIR$/BagLocation/BagCompartment/views/component.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BagLocation.xcodeproj/project.xcworkspace/xcuserdata/jonathandev.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/BagLocation.xcodeproj/project.xcworkspace/xcuserdata/jonathandev.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BagLocation.xcodeproj/xcuserdata/jonathandev.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" beforeDir="false" afterPath="$PROJECT_DIR$/BagLocation.xcodeproj/xcuserdata/jonathandev.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BagLocation/AddBagScreen/AddBag.swift" beforeDir="false" afterPath="$PROJECT_DIR$/BagLocation/AddBagScreen/AddBag.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BagLocation/AddBagScreen/AddBagImage.swift" beforeDir="false" afterPath="$PROJECT_DIR$/BagLocation/AddBagScreen/AddBagImage.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BagLocation/BagLocationApp.swift" beforeDir="false" afterPath="$PROJECT_DIR$/BagLocation/BagLocationApp.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BagLocation/BagScreen/BagScreen.swift" beforeDir="false" afterPath="$PROJECT_DIR$/BagLocation/BagScreen/BagScreen.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BagLocation/HomeScreen/CardView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/BagLocation/HomeScreen/CardView.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BagLocation/HomeScreen/HomeScreenView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/BagLocation/HomeScreen/HomeScreenView.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BagLocation/Onboarding/Model.swift" beforeDir="false" afterPath="$PROJECT_DIR$/BagLocation/Onboarding/Model.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BagLocation/Onboarding/OnboardingMainScreen.swift" beforeDir="false" afterPath="$PROJECT_DIR$/BagLocation/Onboarding/OnboardingMainScreen.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BagLocation/Utils/ClearTextField.swift" beforeDir="false" afterPath="$PROJECT_DIR$/BagLocation/Utils/ClearTextField.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoreDataModel/BagsEntity+CoreDataProperties.swift" beforeDir="false" afterPath="$PROJECT_DIR$/CoreDataModel/BagsEntity+CoreDataProperties.swift" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,16 +53,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/agusbudianto/Desktop/BagLocation&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Git.Branch.Popup.ShowAllRemotes": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "cidr.known.project.marker": "true",
+    "last_opened_file_path": "/Users/agusbudianto/Desktop/BagLocation",
+    "nodejs_package_manager_path": "npm"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="BagLocation" type="AppleRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BagLocation" TARGET_NAME="BagLocation" CONFIG_NAME="Debug" SCHEME_NAME="BagLocation" IS_LOCATION_SIMULATION_ALLOWED="true" APPLICATION_LANGUAGE="IDELaunchSchemeLanguageUseSystemLanguage" APPLICATION_REGION="" RUN_TARGET_PROJECT_NAME="BagLocation" RUN_TARGET_NAME="BagLocation" MAKE_ACTIVE="TRUE" SHOULD_DEBUG_EXTENSIONS="false">
       <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">

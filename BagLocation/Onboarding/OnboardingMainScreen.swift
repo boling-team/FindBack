@@ -51,15 +51,21 @@ struct OnboardingMainScreen: View {
                 
                 
                 Button(action : {
-                    if selectedPage > (onboardItem.count - 1){
-                        selectedPage = 0
-                        return
+                    withAnimation {
+                        // JIKA SELECTED PAGE == ONBOARD COUNT
+                        if selectedPage == (onboardItem.count - 1){
+                            dismiss()
+                            
+                            // SAVE KE USER DEFAULTS
+                            
+                            return
+                        } else {
+                            selectedPage += 1
+                        }
                     }
-                    
-                    selectedPage += 1
                 })
                 {
-                    Text("Next")
+                    Text(selectedPage == (onboardItem.count - 1) ? "Get Started" : "Next")
                         .frame(width: 192)
                         .font(.system(size: 18))
                         .padding()

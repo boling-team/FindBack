@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C6DBCFD2837B95900FE26BF /* AddBagImageCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6DBCFC2837B95900FE26BF /* AddBagImageCoreData.swift */; };
 		7CADD9F4282BF5B500A98290 /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CADD9F3282BF5B500A98290 /* HomeScreenView.swift */; };
 		7CADD9F8282BF5D700A98290 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CADD9F7282BF5D700A98290 /* CardView.swift */; };
 		7CADD9FB282BF6AA00A98290 /* ClearTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CADD9FA282BF6AA00A98290 /* ClearTextField.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7C6DBCFC2837B95900FE26BF /* AddBagImageCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBagImageCoreData.swift; sourceTree = "<group>"; };
 		7CADD9F3282BF5B500A98290 /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
 		7CADD9F7282BF5D700A98290 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		7CADD9FA282BF6AA00A98290 /* ClearTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearTextField.swift; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 				DC411632282D4A400055B9F7 /* Coordinator.swift */,
 				DC215E5E28334D5200A71627 /* AddPocket.swift */,
 				DCCD3A4F28352D590068C610 /* AddBagImage.swift */,
+				7C6DBCFC2837B95900FE26BF /* AddBagImageCoreData.swift */,
 			);
 			path = AddBagScreen;
 			sourceTree = "<group>";
@@ -346,6 +349,8 @@
 				DC7E0C30282BFA2600FDF70C /* AddBag.swift in Sources */,
 				CBD1E8C82836C7770002C461 /* SearchResultItem.swift in Sources */,
 				CBD1E8C92836C7770002C461 /* SearchBarView.swift in Sources */,
+				CBD1E8BF2836C7650002C461 /* BagAddCompartment.swift in Sources */,
+				7C6DBCFD2837B95900FE26BF /* AddBagImageCoreData.swift in Sources */,
 				7CD1F0E2283743E000F7722E /* ItemsEntity+CoreDataProperties.swift in Sources */,
 				CBD1E8C12836C7650002C461 /* list.swift in Sources */,
 				CBD1E8C22836C7650002C461 /* component.swift in Sources */,
