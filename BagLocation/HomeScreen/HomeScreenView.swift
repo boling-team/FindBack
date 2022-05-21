@@ -28,14 +28,10 @@ struct HomeScreenView: View {
     
     var body: some View {
         NavigationView {
-            HomeScreenList(bags: bags)
+            HomeScreenList(searchText: $searchText, bags: bags)
                 .listStyle(.insetGrouped)
                 .searchable(text: $searchText, prompt: "Search item") {
-                    //TODO: LOOP ITEM LIST WITH LOCATION INFORMATION PSEUDOCODE
-                    // FOREACH ITEM IN ITEM_LIST
-                    //      SHOW CARDVIEW CONTAINING THE INFORMATION
                 }
-//                .environment(\.managedObjectContext, viewContext)
             .overlay {
                 if (bags.count == 0) {
                     VStack(spacing: 20) {
@@ -81,28 +77,30 @@ struct HomeScreenList: View {
     @Environment(\.isSearching) private var isSearching
     
     // MARK: STATE
-    @State var searchText: String = ""
+    @Binding var searchText: String
     @State var searchResult: [SearchResult] = []
     
+//    @State
+//    @ObservedObject
     var bags: FetchedResults<BagsEntity>
+//    @ObservedObject
+//    var bags: BagsEntity
     
     var body: some View {
         List{
             if(isSearching) {
                 // MARK: FITUR SEARCHING
-//                ForEach(bags, id: \.wrappedBagID) {
-//                    bag in
-//                    Section {
-//                        CardView(bag: bag)
-//                    }
-//                    .listRowBackground(Color("IjoMuda"))
-//                }
-//                .onDelete(perform: deleteBag)
-                Text("Lagi Cari Mas")
+                ForEach(searchResult, id:\.bag.bagID) {
+                    result in
+                    ResultItemCard(resultItem: result)
+                }
             } else {
                 ForEach(bags, id: \.wrappedBagID) {
                     bag in
+                    Section {
                         CardView(bag: bag)
+                    }
+                    
                     .listRowBackground(Color("IjoMuda"))
                 }
                 .onDelete(perform: deleteBag)
@@ -143,17 +141,15 @@ struct HomeScreenList: View {
     private func deleteBag(offsets: IndexSet) {
         withAnimation {
             offsets.map { bags[$0] }.forEach(viewContext.delete)
-            
-            try! viewContext.save()
-//            
-//            do {
-//                try viewContext.save()
-//            } catch {
-//                // Replace this implementation with code to handle the error appropriately.
-//                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-//                let nsError = error as NSError
-//                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-//            }
+
+            do {
+                try viewContext.save()
+            } catch {
+                // Replace this implementation with code to handle the error appropriately.
+                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            }
         }
     }
 }

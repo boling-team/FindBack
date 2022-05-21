@@ -27,7 +27,7 @@ struct AddBagImageCoreData: View {
             NavigationView{
                 ZStack {
                     VStack {
-                        if (capturedImage==nil){
+                        if (capturedImage == nil){
                             ZStack{
                                 Rectangle()
                                     .fill(Color("IjoTua"))
@@ -92,6 +92,7 @@ struct AddBagImageCoreData: View {
                             bag.bagImage = capturedImage?.jpegData(compressionQuality: 1.0)
                             
                             try? viewContext.save()
+//                            self.objectWillChange.send()
                         }
                         
                         // DISMISS THE SHEETS
@@ -101,11 +102,15 @@ struct AddBagImageCoreData: View {
                             .foregroundColor(Color("IjoTua"))
                     }
                 )
-            }
+            }    .navigationTitle("Bag Image")
+                .navigationBarTitleDisplayMode(.inline)
+          
             if (showCaptureImageView) {
                 CaptureImageView(isShown: $showCaptureImageView, image: $capturedImage)
                     .ignoresSafeArea(.all, edges: .all)
+                    .transition(.move(edge: .trailing))
             }
         }
+       
     }
 }

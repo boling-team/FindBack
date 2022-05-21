@@ -204,7 +204,7 @@ struct TemporaryItem: Equatable {
 struct TemporaryBag: Equatable {
     var bagID: UUID = UUID()
     var bagName: String
-    var bagImage: UIImage? = UIImage(systemName: "camera") ?? UIImage()
+    var bagImage: UIImage? = nil
     
     var compartments: [TemporaryCompartment] = [TemporaryCompartment()]
 }

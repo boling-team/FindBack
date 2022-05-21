@@ -9,8 +9,6 @@ import SwiftUI
 import UIKit
 
 struct CardView: View {
-//    @State var bagDetailSheet: Bool = false
-    
     var bag: BagsEntity
     
     var body: some View {
@@ -22,13 +20,12 @@ struct CardView: View {
                     .resizable()
                     .frame(width: 50, height: 50)
                     .clipped()
-//                    .padding(10)
                     .cornerRadius(8)
-                    .border(.gray, width: 1)
                 
                 VStack(alignment: .leading, spacing: 4) {
                     Text(bag.wrappedBagName)
                         .lineLimit(1)
+                        .font(Font.system(.headline, design: .serif))
                     Text("\(bag.compartmentList.count) Compartments")
                         .lineLimit(1)
                         .font(.caption)

@@ -13,32 +13,33 @@ struct SearchResultItem: View {
     }
 }
 
-struct SearchResultItem_Previews: PreviewProvider {
-    static var previews: some View {
-        ResultItemCard()
-    }
-}
-
+//struct SearchResultItem_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ResultItemCard()
+//    }
+//}
 
 struct ResultItemCard: View {
+    var resultItem: SearchResult
+    
     var body: some View {
         HStack {
-            Image("EmptyBag")
+            Image(uiImage: resultItem.bag.wrappedBagImage)
                 .resizable()
                 .scaledToFit()
                 .cornerRadius(6)
                 .frame(width: 120, height: 120)
                 .padding()
             VStack(alignment: .trailing){
-                Text("Minyak Goreng").frame(maxWidth: .infinity, alignment: .leading)
+                Text(resultItem.item.itemName!).frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.top, 20)
                     .font(.system(size: 18, design: .serif))
-                Text("front Pocket").frame(maxWidth: .infinity, alignment: .leading)
+                Text(resultItem.compartment.compartmentName!).frame(maxWidth: .infinity, alignment: .leading)
                     .font(.subheadline)
                     .opacity(0.7)
                    
                 Spacer()
-                Text("Agus Bag")
+                Text(resultItem.bag.wrappedBagName)
                     .padding(.bottom, 30)
                     .font(.body)
                     .opacity(0.7)

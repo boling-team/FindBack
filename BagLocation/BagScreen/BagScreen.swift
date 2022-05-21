@@ -29,90 +29,76 @@ struct BagScreen: View {
     }
     
     var body: some View {
-        VStack {
-            List{
-                Section(header: Text("Bag Detail")
-                    .font(Font.system(.title2, design: .serif))
-                    .foregroundColor(.black)
-                    .bold()
-                    .padding(.leading, -12.0)){
-                        
-                        HStack{
-                            Button {
-                                showingSheet.toggle()
-                            } label: {
-                                ZStack {
-                                    if(bag.bagImage == nil) {
-                                        Rectangle()
-                                            .fill(Color("IjoTua"))
-                                            .cornerRadius(5)
-                                            .frame(width: 100, height: 100)
-                                        
-                                        Image(systemName: "camera")
-                                            .renderingMode(.original)
-                                            .font(Font.custom("Serif",size: 30))
-                                            .foregroundColor(.white)
-                                    }
-                                    else {
-                                        Image(uiImage: UIImage(data: bag.bagImage!)!)
-                                            .resizable()
-                                            .clipped()
-                                            .frame(width: 100, height: 100)
-                                            .cornerRadius(5)
-                                            .padding(.all, 0.0)
-                                    }
+        List{
+            Section(header: Text("Bag Detail")
+                .font(Font.system(.title2, design: .serif))
+                .foregroundColor(.black)
+                .bold()
+                .padding(.leading, -12.0)){
+                    
+                    HStack{
+                        Button {
+                            showingSheet.toggle()
+                        } label: {
+                            ZStack {
+                                if(bag.bagImage == nil) {
+                                    Rectangle()
+                                        .fill(Color("IjoTua"))
+                                        .cornerRadius(5)
+                                        .frame(width: 100, height: 100)
+                                    
+                                    Image(systemName: "camera")
+                                        .frame(width: 40, height: 40)
+                                        .font(Font.custom("Serif",size: 30))
+                                        .foregroundColor(.white)
+                                }
+                                else {
+                                    Image(uiImage: UIImage(data: bag.bagImage!)!)
+                                        .resizable()
+                                        .clipped()
+                                        .frame(width: 100, height: 100)
+                                        .cornerRadius(5)
+                                        .padding(.all, 0.0)
                                 }
                             }
-                            .fullScreenCover(isPresented: $showingSheet) {
-                                AddBagImageCoreData(image: bag.wrappedBagImage, bag: bag)
-                            }
-                            
-                            VStack(alignment: .leading){
-                                Text("Bag Name")
-                                    .font(Font.system(.headline, design: .serif))
-                                    .foregroundColor(.black)
-                                BagNameTextField(bag: bag)
-                                
-                                //                                        .modifier(TextClearField(text: $bag.bagName))
-                                
-                                    .foregroundColor(.black)
-                                    .disabled(!editMode!.wrappedValue.isEditing)
-                                
-                            }.textFieldStyle(RoundedBorderTextFieldStyle())
-                                .padding(.leading, 5.0)
                         }
-                        .listRowInsets(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
+                        .fullScreenCover(isPresented: $showingSheet) {
+                            AddBagImageCoreData(image: bag.wrappedBagImage, bag: bag)
+                        }
+                        
+                        VStack(alignment: .leading){
+                            Text("Bag Name")
+                                .font(Font.system(.headline, design: .serif))
+                                .foregroundColor(.black)
+                            BagNameTextField(bag: bag)
+                                .foregroundColor(.black)
+                                .disabled(!editMode!.wrappedValue.isEditing)
+                            
+                        }.textFieldStyle(RoundedBorderTextFieldStyle())
+                            .padding(.leading, 5.0)
                     }
-                    .listRowBackground(Color("IjoMuda"))
-                    .textCase(nil)
-                
-                Section(header: Text("Compartment List")
-                    .font(Font.system(.title2, design: .serif))
-                    .foregroundColor(.black)
-                    .bold()
-                    .padding(.leading, -12.0)){
-                    }
-                    .padding(.top, 5.0)
-                    .textCase(nil)
-                
-                
-                ForEach(bag.compartmentList, id:\.compartmentID) {
-                    compartment in
-                    
-//                    NavigationLink {
-//
-//                    } label: {
-//                        VStack(alignment: .leading) {
-//                            CompartmentNameTextField(compartment: compartment)
-//                                .disabled(!editMode!.wrappedValue.isEditing)
-//                        }
-//                    }
-                    ReadBagCompartmentView(compartment: compartment)
+                    .listRowInsets(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
                 }
-                .onDelete(perform: deleteCompartment)
-                
-            }.listStyle(.insetGrouped)
+                .listRowBackground(Color("IjoMuda"))
+                .textCase(nil)
+            
+            Section(header: Text("Compartment List")
+                .font(Font.system(.title2, design: .serif))
+                .foregroundColor(.black)
+                .bold()
+                .padding(.leading, -12.0)){
+                }
+                .padding(.top, 5.0)
+                .textCase(nil)
+            
+            
+            ForEach(bag.compartmentList, id:\.compartmentID) {
+                compartment in
+                ReadBagCompartmentView(compartment: compartment)
+            }
+            .onDelete(perform: deleteCompartment)
         }
+        .listStyle(.insetGrouped)
         .navigationTitle("Bag")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -121,8 +107,8 @@ struct BagScreen: View {
             }
             
             ToolbarItemGroup(placement: .bottomBar) {
-                if(editMode!.wrappedValue == .active) {
-                    Button {
+                if(editMode?.wrappedValue == .active) {
+                    Button{
                         withAnimation {
                             // MARK: CAN BE BETTER
                             // ADD A NEW COMPARTMENT
@@ -139,17 +125,23 @@ struct BagScreen: View {
                                     bag.compartments = NSSet(array: currentCompartments)
                                     
                                     try? viewContext.save()
+                                    
                                 }
                             }
                         }
                     } label: {
                         HStack {
-                            Image(systemName: "plus.circle.fill")
+                            Label("Add Compartment", systemImage:"plus.circle.fill")
+                                .font(.system(size: 23))
+                                .foregroundColor(Color("IjoTua"))
                             
                             Text("Add Compartment")
+                                .foregroundColor(Color("IjoTua"))
+                                .bold()
+                                .font(.system(size: 22))
                         }
-                        Spacer()
                     }
+                    Spacer()
                 }
             }
         }
@@ -209,32 +201,6 @@ struct ReadBagCompartmentView: View {
                 }
             }
             .padding(.all, 3.0)
-
-//            NavigationLink {
-//
-//            } label: {
-//                HStack{
-//                    Image("empty")
-//                        .resizable()
-//                        .cornerRadius(5)
-//                        .frame(width: 50, height: 50)
-//                    VStack(alignment: .leading){
-//                        CompartmentNameTextField(compartment: compartment)
-//                            .disabled(!editMode!.wrappedValue.isEditing)
-//                            .font(Font.system(.headline, design: .serif))
-//                            .foregroundColor(.black)
-//                            .padding(.leading, 5.0)
-//                        Text("\(compartment.items?.count ?? 0) Items")
-//                            .foregroundColor(.gray)
-//                            .multilineTextAlignment(.leading)
-//                            .padding(.leading, 5.0)
-//                    }
-//                }
-//            }
-//            .padding(.all, 3.0)
-//            .sheet(isPresented: $showingSheet) {
-//                AddPocket()
-//            }
         }
         .listRowBackground(Color("IjoMuda"))
         .sheet(isPresented: $showingSheet) {

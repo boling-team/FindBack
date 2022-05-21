@@ -20,7 +20,6 @@ struct ElementCell: View {
             Divider()
         }.listRowSeparator(.hidden)
         .listRowInsets(.init())
-           
     }
 }
 
@@ -28,23 +27,23 @@ struct ElementCell: View {
 struct ElementList: View {
     @Binding var model: TemporaryCompartment
     var body: some View {
-            List {
-                ForEach($model.items, id: \.itemID) {
-                    item in
-                    ElementCell(row:item)
-                        .listRowSeparator(.hidden)
-                        .listRowInsets(.init())
-                        .swipeActions {
-                            Button(action: {
-                                model.items = model.items.filter{
-                                    $0.itemID != item.itemID.wrappedValue
-                                }
-                            }) {
-                                Text("Delete").foregroundColor(.red).background(.black)
-                            }.tint(.red)
-                            
-                        }
-                }
-            }.listStyle(PlainListStyle())
+        List {
+            ForEach($model.items, id: \.itemID) {
+                item in
+                ElementCell(row:item)
+                    .listRowSeparator(.hidden)
+                    .listRowInsets(.init())
+                    .swipeActions {
+                        Button(action: {
+                            model.items = model.items.filter{
+                                $0.itemID != item.itemID.wrappedValue
+                            }
+                        }) {
+                            Text("Delete").foregroundColor(.red).background(.black)
+                        }.tint(.red)
+                        
+                    }
+            }
+        }.listStyle(PlainListStyle())
     }
 }

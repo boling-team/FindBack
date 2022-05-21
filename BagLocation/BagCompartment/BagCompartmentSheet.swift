@@ -14,37 +14,39 @@ struct BagCompartmentItemSheet: View {
     @State var tmpCompartment: TemporaryCompartment
     
     var body: some View {
-        ZStack{
-            if (showCaptureImageView) {
-                CaptureImageView(isShown: $showCaptureImageView, image: $tmpCompartment.compartmentImage)
+        NavigationView {
+            ZStack{
+                if (showCaptureImageView) {
+                    CaptureImageView(isShown: $showCaptureImageView, image: $tmpCompartment.compartmentImage)
+                        .ignoresSafeArea(.all, edges: .all)
+                }
+                BagCompartmentDetailsView(photoActionButtonText: tmpCompartment.compartmentImage == nil ? "Add Image" : "Change Image", tmpModel: $tmpCompartment)
+                    .ignoresSafeArea(.all, edges: .bottom)
+                
             }
-            
-            VStack(alignment: .leading){
-                HStack{
-                    Label("Cancel", systemImage: "chevron.backward")
-                        .foregroundColor(.blue)
-                        .onTapGesture {
-                            presentationMode.dismiss()
-                        }
-                    
-                    Spacer()
-                    Text("Saku Kiri")
-                    Spacer()
+            .navigationTitle(bagCompartment.compartmentName)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Cancel") {
+                        presentationMode.dismiss()
+                    }
+                }
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Save"){
                         bagCompartment.items = tmpCompartment.items
                         bagCompartment.compartmentImage = tmpCompartment.compartmentImage
                         bagCompartment.compartmentName = tmpCompartment.compartmentName
                         presentationMode.dismiss()
                     }
-                }.padding()
-                
-                BagCompartmentDetailsView(photoActionButtonText: tmpCompartment.compartmentImage == nil ? "Add Image" : "Change Image", tmpModel: $tmpCompartment)
-                    .ignoresSafeArea(.all, edges: .bottom)
-                
+                }
             }
         }
+        
     }
 }
+
 //
 //struct BagCompartmentItemSheet_Previews: PreviewProvider {
 //    static var previews: some View {

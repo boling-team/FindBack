@@ -31,7 +31,11 @@ extension BagsEntity {
     }
     
     public var wrappedBagImage: UIImage {
-        UIImage(data: bagImage!) ?? UIImage(systemName: "plus")!
+        if(bagImage == nil) {
+            return UIImage(named: "EmptyBag")!
+        } else {
+            return UIImage(data: bagImage!)!
+        }
     }
     
     public var compartmentList: [CompartmentsEntity] {
