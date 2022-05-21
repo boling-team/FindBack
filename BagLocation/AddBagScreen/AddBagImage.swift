@@ -61,7 +61,6 @@ struct AddBagImage: View {
                                     .cornerRadius(12)
                                     .frame(width: 338, height: 50)
                                 
-                                //                                Text(image==nil ? "Take Photo" : "Change Photo")
                                 Text("Take Photo")
                                     .bold()
                                     .font(.system(size: 22))

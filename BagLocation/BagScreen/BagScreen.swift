@@ -99,14 +99,15 @@ struct BagScreen: View {
                 ForEach(bag.compartmentList, id:\.compartmentID) {
                     compartment in
                     
-                    NavigationLink {
-                        
-                    } label: {
-                        VStack(alignment: .leading) {
-                            CompartmentNameTextField(compartment: compartment)
-                                .disabled(!editMode!.wrappedValue.isEditing)
-                        }
-                    }
+//                    NavigationLink {
+//
+//                    } label: {
+//                        VStack(alignment: .leading) {
+//                            CompartmentNameTextField(compartment: compartment)
+//                                .disabled(!editMode!.wrappedValue.isEditing)
+//                        }
+//                    }
+                    ReadBagCompartmentView(compartment: compartment)
                 }
                 .onDelete(perform: deleteCompartment)
                 
@@ -169,6 +170,75 @@ struct BagScreen: View {
                 let nsError = error as NSError
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
+        }
+    }
+}
+
+struct ReadBagCompartmentView: View {
+    // MARK: ENVIRONMENT
+    @Environment(\.editMode) var editMode
+    
+    // MARK: BINDING
+    @ObservedObject var compartment: CompartmentsEntity
+    
+    @State private var showingSheet = false
+    var body: some View {
+        Section{
+            Button {
+                showingSheet.toggle()
+            } label: {
+                HStack{
+                    Image("empty")
+                        .resizable()
+                        .cornerRadius(5)
+                        .frame(width: 50, height: 50)
+                    VStack(alignment: .leading){
+                        CompartmentNameTextField(compartment: compartment)
+                            .disabled(!editMode!.wrappedValue.isEditing)
+                            .font(Font.system(.headline, design: .serif))
+                            .foregroundColor(.black)
+                            .padding(.leading, 5.0)
+                        Text("\(compartment.items?.count ?? 0) Items")
+                            .foregroundColor(.gray)
+                            .multilineTextAlignment(.leading)
+                            .padding(.leading, 5.0)
+                    }
+                    Spacer()
+                    Image(systemName: "chevron.right")
+                        .foregroundColor(.gray)
+                }
+            }
+            .padding(.all, 3.0)
+
+//            NavigationLink {
+//
+//            } label: {
+//                HStack{
+//                    Image("empty")
+//                        .resizable()
+//                        .cornerRadius(5)
+//                        .frame(width: 50, height: 50)
+//                    VStack(alignment: .leading){
+//                        CompartmentNameTextField(compartment: compartment)
+//                            .disabled(!editMode!.wrappedValue.isEditing)
+//                            .font(Font.system(.headline, design: .serif))
+//                            .foregroundColor(.black)
+//                            .padding(.leading, 5.0)
+//                        Text("\(compartment.items?.count ?? 0) Items")
+//                            .foregroundColor(.gray)
+//                            .multilineTextAlignment(.leading)
+//                            .padding(.leading, 5.0)
+//                    }
+//                }
+//            }
+//            .padding(.all, 3.0)
+//            .sheet(isPresented: $showingSheet) {
+//                AddPocket()
+//            }
+        }
+        .listRowBackground(Color("IjoMuda"))
+        .sheet(isPresented: $showingSheet) {
+            AddPocket()
         }
     }
 }
