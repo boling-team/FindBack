@@ -35,6 +35,7 @@ struct HomeScreenView: View {
                     // FOREACH ITEM IN ITEM_LIST
                     //      SHOW CARDVIEW CONTAINING THE INFORMATION
                 }
+//                .environment(\.managedObjectContext, viewContext)
             .overlay {
                 if (bags.count == 0) {
                     VStack(spacing: 20) {
@@ -143,14 +144,16 @@ struct HomeScreenList: View {
         withAnimation {
             offsets.map { bags[$0] }.forEach(viewContext.delete)
             
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
+            try! viewContext.save()
+//            
+//            do {
+//                try viewContext.save()
+//            } catch {
+//                // Replace this implementation with code to handle the error appropriately.
+//                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+//                let nsError = error as NSError
+//                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+//            }
         }
     }
 }

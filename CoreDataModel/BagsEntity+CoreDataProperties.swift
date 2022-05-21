@@ -38,7 +38,7 @@ extension BagsEntity {
         let setOfCompartment = compartments as? Set<CompartmentsEntity> ?? []
         
         return setOfCompartment.sorted{
-            $0.compartmentName! < $1.compartmentName!
+            $0.compartmentName ?? "Unknown" < $1.compartmentName ?? "Unknown"
         }
     }
 }

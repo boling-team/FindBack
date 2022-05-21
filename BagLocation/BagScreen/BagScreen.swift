@@ -20,7 +20,7 @@ struct BagScreen: View {
     
     // MARK: OBSERVED OBJECT
     @ObservedObject var bag: BagsEntity
-
+    
     init(bag: BagsEntity) {
         UITableView.appearance().sectionHeaderHeight = 3
         UITableView.appearance().sectionFooterHeight = 3
@@ -29,30 +29,29 @@ struct BagScreen: View {
     }
     
     var body: some View {
-//        NavigationView{
-            VStack {
-                List{
-                    Section(header: Text("Bag Detail")
-                        .font(Font.system(.title2, design: .serif))
-                        .foregroundColor(.black)
-                        .bold()
-                        .padding(.leading, -12.0)){
-                            
-                            HStack{
-                                Button {
-                                    showingSheet.toggle()
-                                } label: {
-                                    ZStack {
+        VStack {
+            List{
+                Section(header: Text("Bag Detail")
+                    .font(Font.system(.title2, design: .serif))
+                    .foregroundColor(.black)
+                    .bold()
+                    .padding(.leading, -12.0)){
+                        
+                        HStack{
+                            Button {
+                                showingSheet.toggle()
+                            } label: {
+                                ZStack {
                                     if(bag.bagImage == nil) {
-                                            Rectangle()
-                                                .fill(Color("IjoTua"))
-                                                .cornerRadius(5)
-                                                .frame(width: 100, height: 100)
-                                            
-                                            Image(systemName: "camera")
-                                                .renderingMode(.original)
-                                                .font(Font.custom("Serif",size: 30))
-                                                .foregroundColor(.white)
+                                        Rectangle()
+                                            .fill(Color("IjoTua"))
+                                            .cornerRadius(5)
+                                            .frame(width: 100, height: 100)
+                                        
+                                        Image(systemName: "camera")
+                                            .renderingMode(.original)
+                                            .font(Font.custom("Serif",size: 30))
+                                            .foregroundColor(.white)
                                     }
                                     else {
                                         Image(uiImage: UIImage(data: bag.bagImage!)!)
@@ -62,89 +61,100 @@ struct BagScreen: View {
                                             .cornerRadius(5)
                                             .padding(.all, 0.0)
                                     }
-                                    }
                                 }
-                                .fullScreenCover(isPresented: $showingSheet) {
-                                    AddBagImageCoreData(image: bag.wrappedBagImage, bag: bag)
-                                }
+                            }
+                            .fullScreenCover(isPresented: $showingSheet) {
+                                AddBagImageCoreData(image: bag.wrappedBagImage, bag: bag)
+                            }
+                            
+                            VStack(alignment: .leading){
+                                Text("Bag Name")
+                                    .font(Font.system(.headline, design: .serif))
+                                    .foregroundColor(.black)
+                                BagNameTextField(bag: bag)
                                 
-                                VStack(alignment: .leading){
-                                    Text("Bag Name")
-                                        .font(Font.system(.headline, design: .serif))
-                                        .foregroundColor(.black)
-                                    BagNameTextField(bag: bag)
-                                    
-//                                        .modifier(TextClearField(text: $bag.bagName))
-                                    
-                                        .foregroundColor(.black)
-                                        .disabled(!editMode!.wrappedValue.isEditing)
-                                      
-                                }.textFieldStyle(RoundedBorderTextFieldStyle())
-                                    .padding(.leading, 5.0)
-                            }
-                            .listRowInsets(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
-                        }
-                        .listRowBackground(Color("IjoMuda"))
-                        .textCase(nil)
-                    
-                    Section(header: Text("Compartment List")
-                        .font(Font.system(.title2, design: .serif))
-                        .foregroundColor(.black)
-                        .bold()
-                        .padding(.leading, -12.0)){
-                        }
-                        .padding(.top, 5.0)
-                        .textCase(nil)
-                    
-                    
-                    //                        ForEach((1...9).reversed(), id: \.self) { i in
-                    //                            CompartmentView()
-                    //                        }.listRowBackground(Color("IjoMuda"))
-                    
-                    ForEach(bag.compartmentList, id:\.compartmentID) {
-                        compartment in
-
-                        NavigationLink {
-//                           ItemDetailView(compartment: compartment)
-                        } label: {
-                            VStack(alignment: .leading) {
-                                CompartmentNameTextField(compartment: compartment)
+                                //                                        .modifier(TextClearField(text: $bag.bagName))
+                                
+                                    .foregroundColor(.black)
                                     .disabled(!editMode!.wrappedValue.isEditing)
-                            }
+                                
+                            }.textFieldStyle(RoundedBorderTextFieldStyle())
+                                .padding(.leading, 5.0)
+                        }
+                        .listRowInsets(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
+                    }
+                    .listRowBackground(Color("IjoMuda"))
+                    .textCase(nil)
+                
+                Section(header: Text("Compartment List")
+                    .font(Font.system(.title2, design: .serif))
+                    .foregroundColor(.black)
+                    .bold()
+                    .padding(.leading, -12.0)){
+                    }
+                    .padding(.top, 5.0)
+                    .textCase(nil)
+                
+                
+                ForEach(bag.compartmentList, id:\.compartmentID) {
+                    compartment in
+                    
+                    NavigationLink {
+                        
+                    } label: {
+                        VStack(alignment: .leading) {
+                            CompartmentNameTextField(compartment: compartment)
+                                .disabled(!editMode!.wrappedValue.isEditing)
                         }
                     }
-                    .onDelete(perform: deleteBag)
-                    
-                }.listStyle(.insetGrouped)
-            }
-            .navigationTitle("Bag")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
                 }
-//                ToolbarItem(placement: .navigationBarLeading) {
-//                    Button {
-//                        print("Button Cancel Pressed")
-//                        dismiss()
-//                    } label: {
-//                        HStack {
-//                            Image(systemName: "chevron.backward")
-//                                .foregroundColor(Color("IjoTua"))
-////                                .renderingMode(.original)
-////                                .font(.system(size: 20))
-//                            Text("Back")
-//                                .foregroundColor(Color("IjoTua"))
-//                                .bold()
-//                        }
-//                    }
-//                }
-
-//            }
+                .onDelete(perform: deleteCompartment)
+                
+            }.listStyle(.insetGrouped)
+        }
+        .navigationTitle("Bag")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                EditButton()
+            }
+            
+            ToolbarItemGroup(placement: .bottomBar) {
+                if(editMode!.wrappedValue == .active) {
+                    Button {
+                        withAnimation {
+                            // MARK: CAN BE BETTER
+                            // ADD A NEW COMPARTMENT
+                            if (bag.compartmentList.first?.compartmentName != "") {
+                                viewContext.performAndWait {
+                                    let newCompartments = CompartmentsEntity(context: viewContext)
+                                    newCompartments.compartmentName = ""
+                                    newCompartments.compartmentID = UUID()
+                                    newCompartments.bag = bag
+                                    
+                                    var currentCompartments = bag.compartmentList
+                                    currentCompartments.append(newCompartments)
+                                    
+                                    bag.compartments = NSSet(array: currentCompartments)
+                                    
+                                    try? viewContext.save()
+                                }
+                            }
+                        }
+                    } label: {
+                        HStack {
+                            Image(systemName: "plus.circle.fill")
+                            
+                            Text("Add Compartment")
+                        }
+                        Spacer()
+                    }
+                }
+            }
         }
     }
     
-    private func deleteBag(offsets: IndexSet) {
+    private func deleteCompartment(offsets: IndexSet) {
         withAnimation {
             // LOOP THROUGH OFFSETS AND DELETE THOSE INDEXES
             offsets.map { bag.compartmentList[$0] }.forEach(viewContext.delete)
@@ -175,8 +185,7 @@ struct BagNameTextField: View {
     
     var body: some View {
         TextField("E.g. Green Bag", text: $bag.bagName)
-//            .modifier(TextClearField(text: $compartment.compartmentName))
-            .modifier(TextClearField(text: $bag.bagName.toUnwrapped(defaultValue: "")))
+        //            .modifier(TextClearField(text: $bag.bagName.toUnwrapped(defaultValue: "")))
             .focused($isTextFieldFocused)
             .onChange(of: isTextFieldFocused) { isFocused in
                 if !isFocused {
@@ -198,7 +207,7 @@ struct CompartmentNameTextField: View {
     
     var body: some View {
         TextField("E.g. Side pocket", text: $compartment.compartmentName)
-            .modifier(TextClearField(text: $compartment.compartmentName.toUnwrapped(defaultValue: "")))
+        //            .modifier(TextClearField(text: $compartment.compartmentName.toUnwrapped(defaultValue: "")))
             .focused($isTextFieldFocused)
             .onChange(of: isTextFieldFocused) { isFocused in
                 if !isFocused {
@@ -210,16 +219,8 @@ struct CompartmentNameTextField: View {
     }
 }
 
-
-//
-//struct BagScreen_Previews: PreviewProvider {
-//    static var previews: some View {
-//        BagScreen()
-//    }
-//}
-
 extension Binding {
-     func toUnwrapped<T>(defaultValue: T) -> Binding<T> where Value == Optional<T>  {
+    func toUnwrapped<T>(defaultValue: T) -> Binding<T> where Value == Optional<T>  {
         Binding<T>(get: { self.wrappedValue ?? defaultValue }, set: { self.wrappedValue = $0 })
     }
 }
