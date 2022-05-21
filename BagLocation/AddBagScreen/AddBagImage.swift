@@ -68,6 +68,12 @@ struct AddBagImage: View {
                                     .cornerRadius(10)
                             }
                         })
+                        Divider()
+                        HStack{
+                            Text("You can only have one bag image at a time.")
+                                .foregroundColor(Color("IjoMuda"))
+                                .font(Font.system(.body, design: .default))
+                        }
                         Spacer()
                     }
                     
