@@ -64,16 +64,13 @@ struct HomeScreenView: View {
                 }
             }
             .navigationTitle("Bag List")
-
         }
-        
     }
 }
 
 struct HomeScreenList: View {
     // MARK: SEARCH
     @Environment(\.managedObjectContext) private var viewContext
-    
     @Environment(\.isSearching) private var isSearching
     
     // MARK: STATE
@@ -85,6 +82,7 @@ struct HomeScreenList: View {
     var bags: FetchedResults<BagsEntity>
 //    @ObservedObject
 //    var bags: BagsEntity
+    @EnvironmentObject var listRefreshID: ListRefreshID
     
     var body: some View {
         List{
@@ -104,6 +102,7 @@ struct HomeScreenList: View {
                     .listRowBackground(Color("IjoMuda"))
                 }
                 .onDelete(perform: deleteBag)
+            
             }
             
             Section {
@@ -115,6 +114,13 @@ struct HomeScreenList: View {
                 }
             }
       }
+        .refreshable {
+//            viewContext.reset()
+//            withAnimation {
+                listRefreshID.refreshID = UUID()
+//            }
+        }
+        .id(listRefreshID.refreshID)
         .onChange(of: searchText, perform: { _ in
             //TODO: FILTERING THE ITEM LIST BASED ON THE SEARCH BAR INPUT (searchText)
             
@@ -164,4 +170,8 @@ struct SearchResult {
     var bag: BagsEntity
     var compartment: CompartmentsEntity
     var item: ItemsEntity
+}
+
+class ListRefreshID: ObservableObject {
+    @Published var refreshID: UUID = UUID()
 }

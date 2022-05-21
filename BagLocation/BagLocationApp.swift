@@ -20,6 +20,7 @@ struct BagLocationApp: App {
                         OnboardingMainScreen()
                     }
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                    .environmentObject(ListRefreshID())
             }
         }
     }

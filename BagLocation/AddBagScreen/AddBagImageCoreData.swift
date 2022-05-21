@@ -11,6 +11,7 @@ struct AddBagImageCoreData: View {
     // MARK: ENVIRONMENT
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var listRefreshID: ListRefreshID
     
     @State var showCaptureImageView: Bool = false
     @State var capturedImage: UIImage?
@@ -92,7 +93,10 @@ struct AddBagImageCoreData: View {
                             bag.bagImage = capturedImage?.jpegData(compressionQuality: 1.0)
                             
                             try? viewContext.save()
-//                            self.objectWillChange.send()
+                            // <Entity>.objectWillChange.send()
+                            bag.objectWillChange.send()
+                            
+//                            listRefreshID.refreshID = UUID()
                         }
                         
                         // DISMISS THE SHEETS
