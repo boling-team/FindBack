@@ -349,7 +349,6 @@
 				DC7E0C30282BFA2600FDF70C /* AddBag.swift in Sources */,
 				CBD1E8C82836C7770002C461 /* SearchResultItem.swift in Sources */,
 				CBD1E8C92836C7770002C461 /* SearchBarView.swift in Sources */,
-				CBD1E8BF2836C7650002C461 /* BagAddCompartment.swift in Sources */,
 				7C6DBCFD2837B95900FE26BF /* AddBagImageCoreData.swift in Sources */,
 				7CD1F0E2283743E000F7722E /* ItemsEntity+CoreDataProperties.swift in Sources */,
 				CBD1E8C12836C7650002C461 /* list.swift in Sources */,
@@ -493,6 +492,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -526,6 +526,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
