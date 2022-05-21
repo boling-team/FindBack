@@ -180,7 +180,7 @@ struct ReadBagCompartmentView: View {
                 showingSheet.toggle()
             } label: {
                 HStack{
-                    Image("empty")
+                    Image(uiImage:  compartment.wrappedCompartmentImage)
                         .resizable()
                         .cornerRadius(5)
                         .frame(width: 50, height: 50)
@@ -204,7 +204,7 @@ struct ReadBagCompartmentView: View {
         }
         .listRowBackground(Color("IjoMuda"))
         .sheet(isPresented: $showingSheet) {
-            AddPocket()
+            ReadBagCompartment(compartment: compartment, itemList: compartment.itemList)
         }
     }
 }

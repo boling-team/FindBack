@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import SwiftUI
 
 
 extension CompartmentsEntity {
@@ -29,6 +30,14 @@ extension CompartmentsEntity {
                 $0.itemName! < $1.itemName!
             }
         }
+    }
+ 
+    public var wrappedCompartmentImage: UIImage {
+        if compartmentImage == nil {
+            return UIImage(systemName: "plus")!
+        }
+        
+        return UIImage(data: compartmentImage!)!
     }
 
 }
