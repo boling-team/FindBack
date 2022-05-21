@@ -69,6 +69,7 @@ struct AddBagImage: View {
                             }
                         })
                         Divider()
+                            .padding(.vertical)
                         HStack{
                             Text("You can only have one bag image at a time.")
                                 .foregroundColor(Color("IjoMuda"))
