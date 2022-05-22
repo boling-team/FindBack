@@ -102,7 +102,7 @@ struct HomeScreenList: View {
             if (bags.count == 0 && !isSearching) {
                 VStack(spacing: 20) {
                     //MARK: JIKA TIDAK MEMBUTUHKAN FOTO BISA DICOMMENT
-                    Text("Your Bag List is empty. \nClick + to add new bag")
+                    Text("Your Bag List is empty. \nClick \"Add\" to add new bag.")
                         .multilineTextAlignment(.center)
                         .padding(.bottom, 40)
                         .foregroundColor(.gray)
