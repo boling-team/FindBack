@@ -135,7 +135,7 @@ struct ReadElementCell: View {
     var body: some View {
         VStack(alignment: .leading){
             Spacer()
-            TextField("input item name", text: $row).padding(.leading)
+            TextField("Input item name", text: $row).padding(.leading)
             Spacer()
             Divider()
         }.listRowSeparator(.hidden)
