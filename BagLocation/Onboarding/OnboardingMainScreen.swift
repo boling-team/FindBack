@@ -39,6 +39,7 @@ struct OnboardingMainScreen: View {
                         Text("Skip")
                             .font(Font.system(.headline, design: .serif))
                             .padding()
+                            .foregroundColor(Color("IjoTua"))
                     }
                 }
                 
