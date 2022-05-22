@@ -24,15 +24,6 @@ struct ReadBagCompartment: View {
     var body: some View {
         NavigationView{
             VStack(alignment: .leading){
-//                HStack{
-//
-//
-//                    Spacer()
-//                    Text()
-//                    Spacer()
-//
-//                }.padding()
-//
                 ReadBagCompartmentDetailsView(
                     photoActionButtonText: compartment.compartmentImage == nil ? "Add Image" : "Change Image",
                     tmpModel: compartment,
@@ -192,7 +183,7 @@ struct ReadAddMoreItem: View {
     var body: some View {
         HStack{
             Button(action : {
-                if(model.first?.itemName != nil) {
+                if(model.count == 0 || model.first?.itemName != nil) {
                     let newItem = ItemsEntity(context: viewContext)
                     newItem.itemID = UUID()
                     model.insert(newItem, at: 0)
