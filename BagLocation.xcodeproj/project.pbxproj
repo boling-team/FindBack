@@ -17,6 +17,7 @@
 		7CD1F0E2283743E000F7722E /* ItemsEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1F0DC283743E000F7722E /* ItemsEntity+CoreDataProperties.swift */; };
 		7CD1F0E3283743E000F7722E /* BagsEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1F0DD283743E000F7722E /* BagsEntity+CoreDataClass.swift */; };
 		7CD1F0E4283743E000F7722E /* BagsEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1F0DE283743E000F7722E /* BagsEntity+CoreDataProperties.swift */; };
+		7CF99A6B283A1B820022B9D9 /* FindBackLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CF99A6A283A1B820022B9D9 /* FindBackLaunchScreen.storyboard */; };
 		CB3403AD2834A1B70045AB62 /* OnboardingMainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3403AC2834A1B70045AB62 /* OnboardingMainScreen.swift */; };
 		CB3403AF2834AA850045AB62 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3403AE2834AA850045AB62 /* Model.swift */; };
 		CB3403B12834AB220045AB62 /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3403B02834AB220045AB62 /* Views.swift */; };
@@ -55,6 +56,7 @@
 		7CD1F0DC283743E000F7722E /* ItemsEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemsEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7CD1F0DD283743E000F7722E /* BagsEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BagsEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		7CD1F0DE283743E000F7722E /* BagsEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BagsEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7CF99A6A283A1B820022B9D9 /* FindBackLaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FindBackLaunchScreen.storyboard; sourceTree = "<group>"; };
 		CB3403AC2834A1B70045AB62 /* OnboardingMainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingMainScreen.swift; sourceTree = "<group>"; };
 		CB3403AE2834AA850045AB62 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		CB3403B02834AB220045AB62 /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				CB8250E6282BF2CB001ED786 /* BagLocation.xcdatamodeld */,
 				7CADD9F9282BF69A00A98290 /* Utils */,
 				CB8250E1282BF2CB001ED786 /* Preview Content */,
+				7CF99A6A283A1B820022B9D9 /* FindBackLaunchScreen.storyboard */,
 			);
 			path = BagLocation;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB8250E3282BF2CB001ED786 /* Preview Assets.xcassets in Resources */,
+				7CF99A6B283A1B820022B9D9 /* FindBackLaunchScreen.storyboard in Resources */,
 				CB8250E0282BF2CB001ED786 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -494,6 +498,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = FindBackLaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
@@ -528,6 +533,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = FindBackLaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
