@@ -66,7 +66,6 @@ struct ReadBagCompartment: View {
 
 
 struct ReadBagCompartmentDetailsView: View {
-    
     init(photoActionButtonText: String, tmpModel: CompartmentsEntity, itemList: Binding<[ItemsEntity]>, image: Binding<UIImage?>, isEditing: Binding<Bool>, showCaptureImageView: Binding<Bool>){
         self.photoActionButtonText = photoActionButtonText
         self.tmpModel = tmpModel

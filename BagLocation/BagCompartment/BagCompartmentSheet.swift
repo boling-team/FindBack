@@ -16,13 +16,12 @@ struct BagCompartmentItemSheet: View {
     var body: some View {
         NavigationView {
             ZStack{
-                if (showCaptureImageView) {
-                    CaptureImageView(isShown: $showCaptureImageView, image: $tmpCompartment.compartmentImage)
-                        .ignoresSafeArea(.all, edges: .all)
-                }
-                BagCompartmentDetailsView(photoActionButtonText: tmpCompartment.compartmentImage == nil ? "Add Image" : "Change Image", tmpModel: $tmpCompartment)
-                    .ignoresSafeArea(.all, edges: .bottom)
-                
+                BagCompartmentDetailsView(
+                    photoActionButtonText: tmpCompartment.compartmentImage == nil ? "Add Image" : "Change Image",
+                    tmpModel: $tmpCompartment,
+                    showCaptureImageView: $showCaptureImageView
+                )
+                .ignoresSafeArea(.all, edges: .bottom)
             }
             .navigationTitle(bagCompartment.compartmentName)
             .navigationBarTitleDisplayMode(.inline)
@@ -42,14 +41,10 @@ struct BagCompartmentItemSheet: View {
                     }
                 }
             }
+            .fullScreenCover(isPresented: $showCaptureImageView) {
+                CaptureImageView(isShown: $showCaptureImageView, image: $tmpCompartment.compartmentImage)
+                    .ignoresSafeArea(.all, edges: .all)
+            }
         }
-        
     }
 }
-
-//
-//struct BagCompartmentItemSheet_Previews: PreviewProvider {
-//    static var previews: some View {
-//        BagCompartmentItemSheet()
-//    }
-//}

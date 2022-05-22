@@ -9,9 +9,11 @@ import SwiftUI
 
 struct BagCompartmentDetailsView: View {
     
-    init(photoActionButtonText: String, tmpModel: Binding<TemporaryCompartment>){
+    init(photoActionButtonText: String, tmpModel: Binding<TemporaryCompartment>, showCaptureImageView: Binding<Bool>){
         self.photoActionButtonText = photoActionButtonText
         self._tmpModel = tmpModel
+        
+        self._showCaptureImageView = showCaptureImageView
 
         UITableView.appearance().contentInset.top = 0
         
@@ -20,7 +22,7 @@ struct BagCompartmentDetailsView: View {
     var photoActionButtonText: String
     @Binding var tmpModel: TemporaryCompartment
     
-    @State var showCaptureImageView: Bool = false
+    @Binding var showCaptureImageView: Bool
     
     var body: some View {
         ZStack{
@@ -47,9 +49,9 @@ struct BagCompartmentDetailsView: View {
                 AddMoreItem(model: self.$tmpModel)
             }
         }
-            if (showCaptureImageView) {
-                CaptureImageView(isShown: $showCaptureImageView, image: $tmpModel.compartmentImage)
-            }
+//            if (showCaptureImageView) {
+//                CaptureImageView(isShown: $showCaptureImageView, image: $tmpModel.compartmentImage)
+//            }
         }
     }
 }
