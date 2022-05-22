@@ -15,7 +15,7 @@ struct ElementCell: View {
     var body: some View {
         VStack(alignment: .leading){
             Spacer()
-            TextField("type item name...", text: $row.itemName).padding(.leading)
+            TextField("Type item name...", text: $row.itemName).padding(.leading)
             Spacer()
             Divider()
         }.listRowSeparator(.hidden)

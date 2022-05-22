@@ -24,6 +24,33 @@ struct HomeScreenView: View {
     init(){
         UITableView.appearance().sectionHeaderHeight = 3
         UITableView.appearance().sectionFooterHeight = 3
+        
+        var titleFont = UIFont.preferredFont(forTextStyle: .largeTitle) /// the default large title font
+        titleFont = UIFont(
+            descriptor:
+                titleFont.fontDescriptor
+                .withDesign(.serif)? /// make rounded
+                .withSymbolicTraits(.traitBold) /// make bold
+            ??
+            titleFont.fontDescriptor, /// return the normal title if customization failed
+            size: titleFont.pointSize
+        )
+        
+        var inlineFont = UIFont.preferredFont(forTextStyle: .headline) /// the default large title font
+        inlineFont = UIFont(
+            descriptor:
+                inlineFont.fontDescriptor
+                .withDesign(.serif)? /// make rounded
+                .withSymbolicTraits(.traitBold) /// make bold
+            ??
+            inlineFont.fontDescriptor, /// return the normal title if customization failed
+            size: inlineFont.pointSize
+        )
+        
+        /// set the rounded font
+        UINavigationBar.appearance().largeTitleTextAttributes = [.font: titleFont]
+        UINavigationBar.appearance().titleTextAttributes = [.font: inlineFont]
+        
     }
     
     var body: some View {
