@@ -192,7 +192,7 @@ struct ReadAddMoreItem: View {
     var body: some View {
         HStack{
             Button(action : {
-                if(model.last?.itemName != "") {
+                if(model.last?.itemName != nil) {
                     let newItem = ItemsEntity(context: viewContext)
                     newItem.itemID = UUID()
                     model.append(newItem)
