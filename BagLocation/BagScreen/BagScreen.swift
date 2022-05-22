@@ -37,31 +37,35 @@ struct BagScreen: View {
                 .padding(.leading, -12.0)){
                     
                     HStack{
-                        Button {
-                            showingSheet.toggle()
-                        } label: {
-                            ZStack {
-                                if(bag.bagImage == nil) {
-                                    Rectangle()
-                                        .fill(Color("IjoTua"))
-                                        .cornerRadius(5)
-                                        .frame(width: 100, height: 100)
-                                    
-                                    Image(systemName: "camera")
-                                        .frame(width: 40, height: 40)
-                                        .font(Font.custom("Serif",size: 30))
-                                        .foregroundColor(.white)
-                                }
-                                else {
-                                    Image(uiImage: UIImage(data: bag.bagImage!)!)
-                                        .resizable()
-                                        .clipped()
-                                        .frame(width: 100, height: 100)
-                                        .cornerRadius(5)
-                                        .padding(.all, 0.0)
-                                }
+//                        Button {
+//
+//                        } label: {
+//
+//                        }
+                        ZStack {
+                            if(bag.bagImage == nil) {
+                                Rectangle()
+                                    .fill(Color("IjoTua"))
+                                    .cornerRadius(5)
+                                    .frame(width: 100, height: 100)
+                                
+                                Image(systemName: "camera")
+                                    .frame(width: 40, height: 40)
+                                    .font(Font.custom("Serif",size: 30))
+                                    .foregroundColor(.white)
+                            }
+                            else {
+                                Image(uiImage: UIImage(data: bag.bagImage!)!)
+                                    .resizable()
+                                    .clipped()
+                                    .frame(width: 100, height: 100)
+                                    .cornerRadius(5)
+                                    .padding(.all, 0.0)
                             }
                         }
+                        .onTapGesture(perform: {
+                            showingSheet.toggle()
+                        })
                         .fullScreenCover(isPresented: $showingSheet) {
                             AddBagImageCoreData(image: bag.wrappedBagImage, bag: bag)
                         }
