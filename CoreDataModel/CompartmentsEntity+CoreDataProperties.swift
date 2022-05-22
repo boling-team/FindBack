@@ -34,12 +34,11 @@ extension CompartmentsEntity {
  
     public var wrappedCompartmentImage: UIImage {
         if compartmentImage == nil {
-            return UIImage(systemName: "plus")!
+            return UIImage(named: "EmptyCompartment")!
+        } else {
+            return UIImage(data: compartmentImage!)!
         }
-        
-        return UIImage(data: compartmentImage!)!
     }
-
 }
 
 // MARK: Generated accessors for items

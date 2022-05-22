@@ -16,8 +16,6 @@ struct BagCompartmentDetailsView: View {
         self._showCaptureImageView = showCaptureImageView
 
         UITableView.appearance().contentInset.top = 0
-        
-        
     }
     var photoActionButtonText: String
     @Binding var tmpModel: TemporaryCompartment
@@ -26,32 +24,37 @@ struct BagCompartmentDetailsView: View {
     
     var body: some View {
         ZStack{
-        VStack{
-            ImagePlaceholder(compartmentImage: tmpModel.compartmentImage ?? nil)
-            Button(action : {
-                showCaptureImageView.toggle()
-            }){
+            VStack{
+                ImagePlaceholder(compartmentImage: tmpModel.compartmentImage ?? nil)
+                Button(action : {
+                    showCaptureImageView.toggle()
+                }){
+                    ZStack{
+                        Rectangle()
+                            .fill(Color("IjoTua"))
+                            .cornerRadius(12)
+                            .frame(width: 338, height: 50)
+                        
+                        Text(photoActionButtonText)
+                            .bold()
+                            .font(.system(size: 22))
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                    }
+                }
+//                .padding(.leading, 25)
+                Divider()
                 HStack{
-                    Text(photoActionButtonText)
+                    Text("Compartment Items")
+                        .font(.system(size: 22, design: .serif).bold())
+                        .padding()
                     Spacer()
                 }
-                
-            }.padding(.leading, 25)
-            Divider()
-            HStack{
-                Text("Compartment Items")
-                    .font(.system(size: 22, design: .serif).bold())
-                    .padding()
-                Spacer()
+                Divider()
+                ElementList(model: self.$tmpModel).safeAreaInset(edge: .bottom) {
+                    AddMoreItem(model: self.$tmpModel)
+                }
             }
-            Divider()
-            ElementList(model: self.$tmpModel).safeAreaInset(edge: .bottom) {
-                AddMoreItem(model: self.$tmpModel)
-            }
-        }
-//            if (showCaptureImageView) {
-//                CaptureImageView(isShown: $showCaptureImageView, image: $tmpModel.compartmentImage)
-//            }
         }
     }
 }

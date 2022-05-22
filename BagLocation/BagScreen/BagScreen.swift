@@ -104,6 +104,7 @@ struct BagScreen: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 EditButton()
+                    .foregroundColor(Color("IjoTua"))
             }
             
             ToolbarItemGroup(placement: .bottomBar) {
@@ -132,13 +133,13 @@ struct BagScreen: View {
                     } label: {
                         HStack {
                             Label("Add Compartment", systemImage:"plus.circle.fill")
-                                .font(.system(size: 23))
+//                                .font(.system(size: 23))
                                 .foregroundColor(Color("IjoTua"))
                             
                             Text("Add Compartment")
                                 .foregroundColor(Color("IjoTua"))
                                 .bold()
-                                .font(.system(size: 22))
+//                                .font(.system(size: 22))
                         }
                     }
                     Spacer()

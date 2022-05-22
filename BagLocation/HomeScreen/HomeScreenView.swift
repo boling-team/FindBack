@@ -40,12 +40,14 @@ struct HomeScreenView: View {
                     //BUTTON EDIT SENDIRI KARENA BUG YANG MUNGKIN TERJADI
                     //DENGAN CORE DATA.
                     EditButton()
+                        .foregroundColor(Color("IjoTua"))
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         showingSheet.toggle()
                     } label: {
                         Image(systemName: "plus")
+                            .foregroundColor(Color("IjoTua"))
                     }
                     .sheet(isPresented: $showingSheet) {
                         AddBag()
@@ -54,6 +56,7 @@ struct HomeScreenView: View {
             }
             .navigationTitle("Bag List")
         }
+        .accentColor(Color("IjoTua"))
     }
 }
 

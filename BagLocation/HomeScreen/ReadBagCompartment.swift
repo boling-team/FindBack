@@ -22,29 +22,17 @@ struct ReadBagCompartment: View {
     @State var isEditing: Bool = false
     
     var body: some View {
-        ZStack{
+        NavigationView{
             VStack(alignment: .leading){
-                HStack{
-                    Label("Cancel", systemImage: "chevron.backward")
-                        .foregroundColor(.blue)
-                        .onTapGesture {
-                            presentationMode.dismiss()
-                        }
-                    
-                    Spacer()
-                    Text(compartment.compartmentName ??  "compartment name")
-                    Spacer()
-                    if(isEditing){
-                        Button("Save"){
-                            compartment.items = NSSet(array: itemList.filter{$0.itemName != nil})
-                            compartment.compartmentImage = image?.jpegData(compressionQuality: 1.0) ?? compartment.compartmentImage
-                            isEditing.toggle()
-                            try! viewContext.save()
-                            presentationMode.dismiss()
-                        }
-                    }
-                }.padding()
-                
+//                HStack{
+//
+//
+//                    Spacer()
+//                    Text()
+//                    Spacer()
+//
+//                }.padding()
+//
                 ReadBagCompartmentDetailsView(
                     photoActionButtonText: compartment.compartmentImage == nil ? "Add Image" : "Change Image",
                     tmpModel: compartment,
@@ -56,6 +44,32 @@ struct ReadBagCompartment: View {
                 .ignoresSafeArea(.all, edges: .bottom)
                 
             }
+            .toolbar(content: {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        presentationMode.dismiss()
+                    } label: {
+                        Text("Cancel")
+                            .foregroundColor(Color("IjoTua"))
+                    }
+
+                }
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    if(isEditing){
+                        Button("Save"){
+                            compartment.items = NSSet(array: itemList.filter{$0.itemName != nil})
+                            compartment.compartmentImage = image?.jpegData(compressionQuality: 1.0) ?? compartment.compartmentImage
+                            isEditing.toggle()
+                            try! viewContext.save()
+                            presentationMode.dismiss()
+                        }
+                        .foregroundColor(Color("IjoTua"))
+                    }
+                }
+            })
+            .navigationTitle(compartment.compartmentName ??  "Compartment Name")
+            .navigationBarTitleDisplayMode(.inline)
             .fullScreenCover(isPresented: $showCaptureImageView) {
                 CaptureImageView(isShown: $showCaptureImageView, image: $image)
                     .ignoresSafeArea(.all, edges: .all)
@@ -92,12 +106,19 @@ struct ReadBagCompartmentDetailsView: View {
                 showCaptureImageView.toggle()
                 isEditing = true
             }){
-                HStack{
+                ZStack{
+                    Rectangle()
+                        .fill(Color("IjoTua"))
+                        .cornerRadius(12)
+                        .frame(width: 338, height: 50)
+                    
                     Text(photoActionButtonText)
-                    Spacer()
+                        .bold()
+                        .font(.system(size: 22))
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
                 }
-                
-            }.padding(.leading, 25)
+            }
             Divider()
             HStack{
                 Text("Compartment Items")

@@ -30,6 +30,7 @@ struct BagCompartmentItemSheet: View {
                     Button("Cancel") {
                         presentationMode.dismiss()
                     }
+                    .foregroundColor(Color("IjoTua"))
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -39,6 +40,7 @@ struct BagCompartmentItemSheet: View {
                         bagCompartment.compartmentName = tmpCompartment.compartmentName
                         presentationMode.dismiss()
                     }
+                    .foregroundColor(Color("IjoTua"))
                 }
             }
             .fullScreenCover(isPresented: $showCaptureImageView) {
