@@ -30,6 +30,8 @@ struct OnboardingMainScreen: View {
             VStack{
                 Spacer(minLength: 50)
                 Button(action:{
+                    UserDefaults.standard.set(false, forKey: "FirstTimeUser")
+                    
                     dismiss()
                 }){
                     HStack{
@@ -54,6 +56,8 @@ struct OnboardingMainScreen: View {
                     withAnimation {
                         // JIKA SELECTED PAGE == ONBOARD COUNT
                         if selectedPage == (onboardItem.count - 1){
+                            UserDefaults.standard.set(false, forKey: "FirstTimeUser")
+                            
                             dismiss()
                             
                             // SAVE KE USER DEFAULTS

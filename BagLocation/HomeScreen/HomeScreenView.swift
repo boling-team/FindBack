@@ -32,17 +32,6 @@ struct HomeScreenView: View {
                 .listStyle(.insetGrouped)
                 .searchable(text: $searchText, prompt: "Search item") {
                 }
-            .overlay {
-                if (bags.count == 0) {
-                    VStack(spacing: 20) {
-                        //MARK: JIKA TIDAK MEMBUTUHKAN FOTO BISA DICOMMENT
-                        Text("Your Bag List is empty. \nClick + to add new bag")
-                            .multilineTextAlignment(.center)
-                            .padding(.bottom, 40)
-                            .foregroundColor(.gray)
-                    }
-                }
-            }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     //MARK: BAWAAN EDIT BUTTON SENDIRI
@@ -104,21 +93,28 @@ struct HomeScreenList: View {
                 .onDelete(perform: deleteBag)
             
             }
-            
-            Section {
-                // MARK: JANGAN LUPA HAPUS
-                Button("PRINT OUT DB LOCATION") {
-                    // DB LOCATION
-                    let paths = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
-                    print(paths[0])
+      }
+        .overlay {
+            if (bags.count == 0 && !isSearching) {
+                VStack(spacing: 20) {
+                    //MARK: JIKA TIDAK MEMBUTUHKAN FOTO BISA DICOMMENT
+                    Text("Your Bag List is empty. \nClick + to add new bag")
+                        .multilineTextAlignment(.center)
+                        .padding(.bottom, 40)
+                        .foregroundColor(.gray)
+                }
+            } else if (!searchText.isEmpty && isSearching && searchResult.count == 0) {
+                VStack(spacing: 20) {
+                    //MARK: JIKA TIDAK MEMBUTUHKAN FOTO BISA DICOMMENT
+                    Text("Cannot find your item. \nTry another keyword!")
+                        .multilineTextAlignment(.center)
+                        .padding(.bottom, 40)
+                        .foregroundColor(.gray)
                 }
             }
-      }
+        }
         .refreshable {
-//            viewContext.reset()
-//            withAnimation {
-                listRefreshID.refreshID = UUID()
-//            }
+            listRefreshID.refreshID = UUID()
         }
         .id(listRefreshID.refreshID)
         .onChange(of: searchText, perform: { _ in
