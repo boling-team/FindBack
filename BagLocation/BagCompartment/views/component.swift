@@ -15,8 +15,8 @@ struct AddMoreItem: View {
     var body: some View {
         HStack{
             Button(action : {
-                if(model.items.last?.itemName != "") {
-                    model.items.append(TemporaryItem())
+                if(model.items.first?.itemName != "") {
+                    model.items.insert(TemporaryItem(), at: 0)
                 }
             })
             {
