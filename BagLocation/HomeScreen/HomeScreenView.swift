@@ -46,7 +46,8 @@ struct HomeScreenView: View {
                     Button {
                         showingSheet.toggle()
                     } label: {
-                        Image(systemName: "plus")
+//                        Image(systemName: "plus")
+                        Text("Add")
                             .foregroundColor(Color("IjoTua"))
                     }
                     .sheet(isPresented: $showingSheet) {

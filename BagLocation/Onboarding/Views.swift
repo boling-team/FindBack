@@ -16,7 +16,8 @@ struct OnboardItemView: View {
             VStack{
                 Image(model.image)
                     .resizable()
-                    .frame(width: .infinity, height: 300)
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height: 300)
                 
                 Text(model.title)
                     .fontWeight(.bold)
