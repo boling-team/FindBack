@@ -21,6 +21,7 @@ struct BagLocationApp: App {
                     }
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
                     .environmentObject(ListRefreshID())
+                    .preferredColorScheme(.light)
             }
         }
     }

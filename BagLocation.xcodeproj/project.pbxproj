@@ -24,7 +24,6 @@
 		CB3DB9E62837442100596D93 /* view.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3DB9E52837442100596D93 /* view.swift */; };
 		CB3DB9EB28392F8000596D93 /* ReadBagCompartment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3DB9EA28392F8000596D93 /* ReadBagCompartment.swift */; };
 		CB8250DC282BF2C9001ED786 /* BagLocationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8250DB282BF2C9001ED786 /* BagLocationApp.swift */; };
-		CB8250DE282BF2C9001ED786 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8250DD282BF2C9001ED786 /* ContentView.swift */; };
 		CB8250E0282BF2CB001ED786 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB8250DF282BF2CB001ED786 /* Assets.xcassets */; };
 		CB8250E3282BF2CB001ED786 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB8250E2282BF2CB001ED786 /* Preview Assets.xcassets */; };
 		CB8250E5282BF2CB001ED786 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8250E4282BF2CB001ED786 /* Persistence.swift */; };
@@ -64,7 +63,6 @@
 		CB3DB9EA28392F8000596D93 /* ReadBagCompartment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadBagCompartment.swift; sourceTree = "<group>"; };
 		CB8250D8282BF2C9001ED786 /* BagLocation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BagLocation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB8250DB282BF2C9001ED786 /* BagLocationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagLocationApp.swift; sourceTree = "<group>"; };
-		CB8250DD282BF2C9001ED786 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CB8250DF282BF2CB001ED786 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CB8250E2282BF2CB001ED786 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CB8250E4282BF2CB001ED786 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -182,7 +180,6 @@
 				DC7E0C31282C2EB600FDF70C /* Info.plist */,
 				DC7E0C2C282BF95B00FDF70C /* AddBagScreen */,
 				CB8250DB282BF2C9001ED786 /* BagLocationApp.swift */,
-				CB8250DD282BF2C9001ED786 /* ContentView.swift */,
 				CB8250DF282BF2CB001ED786 /* Assets.xcassets */,
 				CB8250E4282BF2CB001ED786 /* Persistence.swift */,
 				CB8250E6282BF2CB001ED786 /* BagLocation.xcdatamodeld */,
@@ -333,7 +330,6 @@
 				CB8250E5282BF2CB001ED786 /* Persistence.swift in Sources */,
 				DC215E5F28334D5200A71627 /* AddPocket.swift in Sources */,
 				CB3DB9EB28392F8000596D93 /* ReadBagCompartment.swift in Sources */,
-				CB8250DE282BF2C9001ED786 /* ContentView.swift in Sources */,
 				7CADD9FB282BF6AA00A98290 /* ClearTextField.swift in Sources */,
 				7CD1F0E4283743E000F7722E /* BagsEntity+CoreDataProperties.swift in Sources */,
 				7CADD9F4282BF5B500A98290 /* HomeScreenView.swift in Sources */,
