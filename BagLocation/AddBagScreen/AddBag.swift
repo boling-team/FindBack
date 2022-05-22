@@ -159,19 +159,21 @@ struct AddBag: View {
                 ToolbarItemGroup(placement: .bottomBar) {
                     HStack {
                         Button(action : {
-                            print("Pressed")
-                            
-                            bag.compartments.append(TemporaryCompartment())
+                            withAnimation {
+                                print("Pressed")
+                                
+                                if(bag.compartments.last?.compartmentName != "") {
+                                    bag.compartments.append(TemporaryCompartment())
+                                }
+                            }
                         })
                         {
                             Label("Add Compartment", systemImage:"plus.circle.fill")
-//                                .font(.system(size: 23))
                                 .foregroundColor(Color("IjoTua"))
                             
                             Text("Add Compartment")
                                 .foregroundColor(Color("IjoTua"))
                                 .bold()
-//                                .font(.system(size: 22))
                         }
                     }
                     Spacer()
