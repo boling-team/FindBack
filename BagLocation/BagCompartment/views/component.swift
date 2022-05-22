@@ -15,7 +15,9 @@ struct AddMoreItem: View {
     var body: some View {
         HStack{
             Button(action : {
-                model.items.append(TemporaryItem())
+                if(model.items.last?.itemName != "") {
+                    model.items.append(TemporaryItem())
+                }
             })
             {
                 Label("Add More Item", systemImage: "plus.circle")

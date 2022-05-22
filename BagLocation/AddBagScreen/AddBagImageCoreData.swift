@@ -103,8 +103,9 @@ struct AddBagImageCoreData: View {
                             .foregroundColor(Color("IjoTua"))
                     }
                 )
-            }    .navigationTitle("Bag Image")
-                .navigationBarTitleDisplayMode(.inline)
+                .navigationTitle("Bag Image")
+                    .navigationBarTitleDisplayMode(.inline)
+            }
           
             if (showCaptureImageView) {
                 CaptureImageView(isShown: $showCaptureImageView, image: $capturedImage)

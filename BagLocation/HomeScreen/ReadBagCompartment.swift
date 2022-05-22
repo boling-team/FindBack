@@ -192,10 +192,12 @@ struct ReadAddMoreItem: View {
     var body: some View {
         HStack{
             Button(action : {
-                let newItem = ItemsEntity(context: viewContext)
-                newItem.itemID = UUID()
-                model.append(newItem)
-                isEditing = true
+                if(model.last?.itemName != "") {
+                    let newItem = ItemsEntity(context: viewContext)
+                    newItem.itemID = UUID()
+                    model.append(newItem)
+                    isEditing = true
+                }
             })
             {
                 Label("Add More Item", systemImage: "plus.circle")
