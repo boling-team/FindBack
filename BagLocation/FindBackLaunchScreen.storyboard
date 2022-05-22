@@ -28,11 +28,11 @@
                                     <constraint firstAttribute="width" constant="414" id="oLP-yS-1Vz"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="FindBackLaunchScreenIcon" translatesAutoresizingMaskIntoConstraints="NO" id="mNG-xn-WJo">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FindBackLaunchScreenIcon" translatesAutoresizingMaskIntoConstraints="NO" id="mNG-xn-WJo">
                                 <rect key="frame" x="133" y="377" width="148" height="142"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="126" id="Q6r-qU-sno"/>
-                                    <constraint firstAttribute="height" constant="121" id="dXP-VI-tvj"/>
+                                    <constraint firstAttribute="width" constant="148" id="Q6r-qU-sno"/>
+                                    <constraint firstAttribute="height" constant="142" id="dXP-VI-tvj"/>
                                 </constraints>
                             </imageView>
                         </subviews>
