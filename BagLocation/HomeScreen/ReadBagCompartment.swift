@@ -23,10 +23,6 @@ struct ReadBagCompartment: View {
     
     var body: some View {
         ZStack{
-            if (showCaptureImageView) {
-                CaptureImageView(isShown: $showCaptureImageView, image: $image)
-            }
-            
             VStack(alignment: .leading){
                 HStack{
                     Label("Cancel", systemImage: "chevron.backward")
@@ -49,26 +45,38 @@ struct ReadBagCompartment: View {
                     }
                 }.padding()
                 
-                ReadBagCompartmentDetailsView(photoActionButtonText: compartment.compartmentImage == nil ? "Add Image" : "Change Image", tmpModel: compartment, itemList: $itemList, image: $image, isEditing: $isEditing )
-                    .ignoresSafeArea(.all, edges: .bottom)
+                ReadBagCompartmentDetailsView(
+                    photoActionButtonText: compartment.compartmentImage == nil ? "Add Image" : "Change Image",
+                    tmpModel: compartment,
+                    itemList: $itemList,
+                    image: $image,
+                    isEditing: $isEditing,
+                    showCaptureImageView: $showCaptureImageView
+                )
+                .ignoresSafeArea(.all, edges: .bottom)
                 
             }
-        }    }
+            .fullScreenCover(isPresented: $showCaptureImageView) {
+                CaptureImageView(isShown: $showCaptureImageView, image: $image)
+                    .ignoresSafeArea(.all, edges: .all)
+            }
+        }
+    }
 }
 
 
 struct ReadBagCompartmentDetailsView: View {
     
-    init(photoActionButtonText: String, tmpModel: CompartmentsEntity, itemList: Binding<[ItemsEntity]>, image: Binding<UIImage?>, isEditing: Binding<Bool>){
+    init(photoActionButtonText: String, tmpModel: CompartmentsEntity, itemList: Binding<[ItemsEntity]>, image: Binding<UIImage?>, isEditing: Binding<Bool>, showCaptureImageView: Binding<Bool>){
         self.photoActionButtonText = photoActionButtonText
         self.tmpModel = tmpModel
         self._listItem = itemList
         self._image = image
         self._isEditing = isEditing
+        self._showCaptureImageView = showCaptureImageView
         
         UITableView.appearance().contentInset.top = 0
     }
-    
     
     var photoActionButtonText: String
     var tmpModel: CompartmentsEntity
@@ -76,42 +84,36 @@ struct ReadBagCompartmentDetailsView: View {
     @Binding var image: UIImage?
     @Binding var isEditing: Bool
     
-    @State var showCaptureImageView: Bool = false
+    @Binding var showCaptureImageView: Bool
     
     var body: some View {
-        ZStack{
-            VStack{
-                ImagePlaceholder(compartmentImage: image != nil ? image : (tmpModel.compartmentImage == nil ? nil : UIImage(data:tmpModel.compartmentImage!)))
-                Button(action : {
-                    showCaptureImageView.toggle()
-                    isEditing = true
-                }){
-                    HStack{
-                        Text(photoActionButtonText)
-                        Spacer()
-                    }
-                    
-                }.padding(.leading, 25)
-                Divider()
+        VStack{
+            ImagePlaceholder(compartmentImage: image != nil ? image : (tmpModel.compartmentImage == nil ? nil : UIImage(data:tmpModel.compartmentImage!)))
+            Button(action : {
+                showCaptureImageView.toggle()
+                isEditing = true
+            }){
                 HStack{
-                    Text("Compartment Items")
-                        .font(.system(size: 22, design: .serif).bold())
-                        .padding()
+                    Text(photoActionButtonText)
                     Spacer()
                 }
-                Divider()
-                ReadElementList(data: $listItem, isEditing: $isEditing)
-                    .safeAreaInset(edge: .bottom) {
-                        ReadAddMoreItem(model: self.$listItem, isEditing: $isEditing)
-                    }
+                
+            }.padding(.leading, 25)
+            Divider()
+            HStack{
+                Text("Compartment Items")
+                    .font(.system(size: 22, design: .serif).bold())
+                    .padding()
+                Spacer()
             }
-            
-            if (showCaptureImageView) {
-                CaptureImageView(isShown: $showCaptureImageView, image: $image)
-            }
-            }
+            Divider()
+            ReadElementList(data: $listItem, isEditing: $isEditing)
+                .safeAreaInset(edge: .bottom) {
+                    ReadAddMoreItem(model: self.$listItem, isEditing: $isEditing)
+                }
         }
     }
+}
 
 
 
@@ -126,8 +128,8 @@ struct ReadElementCell: View {
             Spacer()
             Divider()
         }.listRowSeparator(.hidden)
-        .listRowInsets(.init())
-
+            .listRowInsets(.init())
+        
     }
 }
 
@@ -136,27 +138,27 @@ struct ReadElementList: View {
     @Binding var data: [ItemsEntity]
     @Binding var isEditing: Bool
     var body: some View {
-            List {
-                ForEach($data, id: \.itemID) {
-                    item in
-                    ReadElementCell(row:item.itemName)
-                        .listRowSeparator(.hidden)
-                        .listRowInsets(.init())
-                        .swipeActions {
-                            Button(action: {
-                                data = data.filter{
-                                    $0.itemID != item.itemID.wrappedValue
-                                }
-                                
-                                isEditing = true
-                            }) {
-                                Text("Delete").foregroundColor(.red).background(.black)
-                                
-                            }.tint(.red)
-
-                        }
-                }
-            }.listStyle(PlainListStyle())
+        List {
+            ForEach($data, id: \.itemID) {
+                item in
+                ReadElementCell(row:item.itemName)
+                    .listRowSeparator(.hidden)
+                    .listRowInsets(.init())
+                    .swipeActions {
+                        Button(action: {
+                            data = data.filter{
+                                $0.itemID != item.itemID.wrappedValue
+                            }
+                            
+                            isEditing = true
+                        }) {
+                            Text("Delete").foregroundColor(.red).background(.black)
+                            
+                        }.tint(.red)
+                        
+                    }
+            }
+        }.listStyle(PlainListStyle())
     }
 }
 
@@ -166,7 +168,7 @@ struct ReadAddMoreItem: View {
     @Binding var model: [ItemsEntity]
     @Binding var isEditing: Bool
     @Environment(\.managedObjectContext) private var viewContext
-
+    
     var body: some View {
         HStack{
             Button(action : {

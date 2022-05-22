@@ -93,10 +93,7 @@ struct AddBagImageCoreData: View {
                             bag.bagImage = capturedImage?.jpegData(compressionQuality: 1.0)
                             
                             try? viewContext.save()
-                            // <Entity>.objectWillChange.send()
                             bag.objectWillChange.send()
-                            
-//                            listRefreshID.refreshID = UUID()
                         }
                         
                         // DISMISS THE SHEETS
