@@ -108,8 +108,9 @@ struct HomeScreenList: View {
         List{
             if(isSearching) {
                 // MARK: FITUR SEARCHING
-                ForEach(searchResult, id:\.bag.bagID) {
+                ForEach(searchResult, id:\.self) {
                     result in
+                    let _ = print(result)
                     ResultItemCard(resultItem: result)
                 }
             } else {
@@ -193,7 +194,7 @@ struct HomeScreenView_Previews: PreviewProvider {
     }
 }
 
-struct SearchResult {
+struct SearchResult: Hashable {
     var bag: BagsEntity
     var compartment: CompartmentsEntity
     var item: ItemsEntity
